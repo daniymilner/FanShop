@@ -1,10 +1,16 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html ng-app="shopApp">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 </head>
 <body>
     Hello world
+    <div class="content" ui-view='content'></div>
+    <script src="app/js/lib/angular/angular.min.js"></script>
+    <script src="app/js/lib/angular/angular-ui-router.min.js"></script>
+    <script src="app/js/module.js"></script>
+    <script src="app/js/app.js"></script>
+    <script src="app/js/controllers/home.ctrl.js"></script>
 </body>
 </html>

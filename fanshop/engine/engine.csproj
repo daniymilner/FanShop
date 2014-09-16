@@ -125,12 +125,54 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\js\app.js" />
+    <Content Include="app\js\lib\angular\angular-animate.min.js" />
+    <Content Include="app\js\lib\angular\angular-bootstrap-prettify.js" />
+    <Content Include="app\js\lib\angular\angular-bootstrap-prettify.min.js" />
+    <Content Include="app\js\lib\angular\angular-bootstrap.js" />
+    <Content Include="app\js\lib\angular\angular-bootstrap.min.js" />
+    <Content Include="app\js\lib\angular\angular-carousel.js" />
+    <Content Include="app\js\lib\angular\angular-cookies.js" />
+    <Content Include="app\js\lib\angular\angular-cookies.min.js" />
+    <Content Include="app\js\lib\angular\angular-file-upload-html5-shim.min.js" />
+    <Content Include="app\js\lib\angular\angular-file-upload.min.js" />
+    <Content Include="app\js\lib\angular\angular-jcrop.js" />
+    <Content Include="app\js\lib\angular\angular-loader.js" />
+    <Content Include="app\js\lib\angular\angular-loader.min.js" />
+    <Content Include="app\js\lib\angular\angular-mocks.js" />
+    <Content Include="app\js\lib\angular\angular-resource.js" />
+    <Content Include="app\js\lib\angular\angular-resource.min.js" />
+    <Content Include="app\js\lib\angular\angular-spectrum-colorpicker.js" />
+    <Content Include="app\js\lib\angular\angular-touch.min.js" />
+    <Content Include="app\js\lib\angular\angular-translate-loader-static-files.min.js" />
+    <Content Include="app\js\lib\angular\angular-translate-storage-cookie.min.js" />
+    <Content Include="app\js\lib\angular\angular-translate.min.js" />
+    <Content Include="app\js\lib\angular\angular-ui-router.min.js" />
+    <Content Include="app\js\lib\angular\angular-ui-sortable.js" />
+    <Content Include="app\js\lib\angular\angular.js" />
+    <Content Include="app\js\lib\angular\angular.min.js" />
+    <Content Include="app\js\lib\angular\version.txt" />
+    <Content Include="app\js\lib\bootstrap.dropdown.js" />
+    <Content Include="app\js\lib\bootstrap.min.js" />
+    <Content Include="app\js\lib\jquery-2.0.3.min.js" />
+    <Content Include="app\js\lib\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="app\js\lib\jquery.Jcrop.min.js" />
+    <Content Include="app\js\lib\jquery.ui.touch-punch.js" />
+    <Content Include="app\js\lib\rangy-core.js" />
+    <Content Include="app\js\lib\rangy-selectionsaverestore.js" />
+    <Content Include="app\js\lib\spectrum.js" />
+    <Content Include="app\js\lib\ui-bootstrap-tpls-0.10.0.min.js" />
+    <Content Include="app\js\module.js" />
+    <Content Include="app\views\home.html" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\js\lib\angular\angular-touch.min.js.map" />
+    <Content Include="app\js\lib\angular\version.json" />
+    <Content Include="app\js\controllers\home.ctrl.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
