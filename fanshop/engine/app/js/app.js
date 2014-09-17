@@ -31,6 +31,18 @@ angular
 					}
 				}
 			})
+			.state('foggotPassword', {
+			    url: '/foggot',
+			    title: 'Foggot password',
+			    views: {
+			        login: {
+			            templateUrl: 'app/views/login.html'
+			        },
+			        content: {
+			            templateUrl: 'app/views/foggotPassword.html'
+			        }
+			    }
+			})
 			.state('products', {
 				url:'/products',
 				title: 'products',
