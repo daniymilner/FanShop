@@ -1,0 +1,26 @@
+﻿.login-block {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.login-wrapper table tr:last-child td {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: justify;
+}
+
+.login-wrapper .register-link-wrapper {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: center;
+}
+
+    .login-wrapper .register-link-wrapper a {
+        display: block;
+        color: #fff;
+        font-size: 14px;
+    }
+.login-wrapper span {
+    color:#fff;
+}

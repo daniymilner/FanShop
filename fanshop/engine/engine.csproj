@@ -140,8 +140,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\js\app.js" />
+    <Content Include="app\js\controllers\login.ctrl.js" />
     <Content Include="app\js\controllers\menu.ctrl.js" />
     <Content Include="app\js\controllers\registration.ctrl.js" />
+    <Content Include="app\js\directives.js" />
     <Content Include="app\js\factory.js" />
     <Content Include="app\js\lib\angular\angular-animate.min.js" />
     <Content Include="app\js\lib\angular\angular-bootstrap-prettify.js" />
@@ -186,7 +188,9 @@
     <Content Include="app\styles\common\menu.css" />
     <Content Include="app\styles\common\reset.css" />
     <Content Include="app\styles\home.css" />
-    <Content Include="app\styles\main.css" />
+    <Content Include="app\styles\login.css" />
+    <Content Include="app\styles\import.css" />
+    <Content Include="app\styles\registration.css" />
     <Content Include="app\views\home.html" />
     <Content Include="app\views\login.html" />
     <Content Include="app\views\products.html" />

@@ -1,0 +1,31 @@
+﻿.registration-wrapper form {
+    display: -webkit-box;
+    -webkit-box-pack: center;
+}
+
+.registration-wrapper table tr {
+    height: 45px;
+}
+
+    .registration-wrapper table tr td {
+        position: relative;
+        vertical-align: middle;
+    }
+
+        .registration-wrapper table tr td:first-child {
+            width: 150px;
+        }
+
+    .registration-wrapper table tr:last-child td {
+        text-align: right;
+    }
+
+.registration-wrapper table span {
+    position: absolute;
+    width: 200px;
+    left: 10px;
+    top: 6px;
+    font-size: 12px;
+    color: red;
+    line-height: 1.3;
+}

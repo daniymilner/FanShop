@@ -1,7 +1,7 @@
 angular.module('shopApp')
 	.factory('Auth', [
 		'$rootScope', '$cookies', '$http', function($rootScope, $cookies, $http){
-			var cookieKey = '__vhe_u';
+			var cookieKey = '__vhe_u_olol';
 			return {
 				authorize: function(data){
 					var cookieUser;

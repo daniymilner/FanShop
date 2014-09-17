@@ -34,7 +34,10 @@ angular
 			.state('products', {
 				url:'/products',
 				title: 'products',
-				views:{
+				views: {
+				    login: {
+				        templateUrl: 'app/views/login.html'
+				    },
 					content:{
 						templateUrl:'app/views/products.html'
 					}

@@ -6,7 +6,7 @@ angular.module('shopApp').controller('registrationController',
 	        login: '',
             email: '',
             password: '',
-            cPassword: ''
+            password_c: ''
 	    };
 	    $scope.register = function () {
 	        console.log($scope.user);

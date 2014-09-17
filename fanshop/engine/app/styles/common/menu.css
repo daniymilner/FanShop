@@ -6,6 +6,7 @@
 	background: #74A0FC url("../../media/images/fc_dynamo_kyiv.png") no-repeat 80px 10px;
 	background-size: 103px 170px;
 	padding: 10px 0;
+	position: relative;
 }
 
 .main-menu ul{

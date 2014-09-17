@@ -2,7 +2,8 @@
 
 angular.module('shopApp', [
 		'ui.router',
-		'ngCookies'
+		'ngCookies',
+        'UserValidation'
 	]).run(
 	['$rootScope', '$state', '$stateParams', 'Auth',
 		function($rootScope, $state, $stateParams, Auth){
