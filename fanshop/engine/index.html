@@ -1,16 +1,35 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html ng-app="shopApp">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="app/styles/main.css"/>
 </head>
 <body>
-    Hello world
-    <div class="content" ui-view='content'></div>
-    <script src="app/js/lib/angular/angular.min.js"></script>
-    <script src="app/js/lib/angular/angular-ui-router.min.js"></script>
-    <script src="app/js/module.js"></script>
-    <script src="app/js/app.js"></script>
-    <script src="app/js/controllers/home.ctrl.js"></script>
+	<div class="app-wrapper">
+		<nav class="main-menu" ng-controller="menuController as menu">
+			<ul>
+				<li ui-sref='home()'>Главная</li>
+				<li ui-sref='products()'>Продукты</li>
+			</ul>
+			<div class="login-block" ui-view="login" ng-if="!$user"></div>
+			<div class="hello-block" ng-if="$user">
+				<p class="name">
+					Привіт, <span>{{$user.name}}</span>!
+				</p>
+			</div>
+		</nav>
+		<div class="content-wrapper">
+			<div class="content" ui-view="content"></div>
+		</div>
+	</div>
+	<script src="app/js/lib/angular/angular.min.js"></script>
+	<script src="app/js/lib/angular/angular-ui-router.min.js"></script>
+	<script src="app/js/lib/angular/angular-cookies.min.js"></script>
+	<script src="app/js/module.js"></script>
+	<script src="app/js/factory.js"></script>
+	<script src="app/js/app.js"></script>
+	<script src="app/js/controllers/menu.ctrl.js"></script>
+	<script src="app/js/controllers/home.ctrl.js"></script>
 </body>
 </html>

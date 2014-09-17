@@ -1,0 +1,25 @@
+/*
+    font-weight settings:
+
+	Ultra Light             |  100
+	Thin                    |  200
+	Light                   |  300
+	Normal, Roman, Regular  |  400
+	Medium                  |  500
+	Bold                    |  600
+	Heavy                   |  700
+	Black                   |  800
+	Extra Black             |  900
+*/
+@font-face{
+	font-family: PTSans;
+	src: url("../../media/fonts/PT-Sans-Regular.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face{
+	font-family: PTSans;
+	src: url("../../media/fonts/PT-Sans-Bold.ttf") format("truetype");
+	font-weight: 600;
+	font-style: normal;
+}
