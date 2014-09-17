@@ -45,6 +45,10 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    text-align: center;
+}
+
 .form-error {
     position: absolute;
     width: 200px;

@@ -9,8 +9,9 @@
 	<div class="app-wrapper">
 		<nav class="main-menu" ng-controller="menuController as menu">
 			<ul>
-				<li ui-sref='home()'>Главная</li>
-				<li ui-sref='products()'>Продукты</li>
+				<li ui-sref='home()'>Home</li>
+				<li ui-sref='products()'>Products</li>
+                <li ui-sref='contacts()'>Contacts</li>
 			</ul>
 			<div class="login-block" ui-view="login" ng-if="!$user"></div>
 			<div class="hello-block" ng-if="$user">
@@ -35,5 +36,6 @@
     <script src="app/js/controllers/registration.ctrl.js"></script>
     <script src="app/js/controllers/login.ctrl.js"></script>
     <script src="app/js/controllers/foggot.ctrl.js"></script>
+    <script src="app/js/controllers/contacts.ctrl.js"></script>
 </body>
 </html>

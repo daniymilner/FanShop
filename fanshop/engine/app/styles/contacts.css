@@ -1,0 +1,8 @@
+﻿.contacts-wrapper .form-error {
+    top: 15px;
+}
+
+.contacts-wrapper input[type=text],
+.contacts-wrapper input[type=email] {
+    width: 217px;
+}

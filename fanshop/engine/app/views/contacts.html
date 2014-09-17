@@ -1,0 +1,43 @@
+﻿<div class="contacts-wrapper" ng-controller="contactsController as contacts">
+    <h1>Contacts</h1>
+    <h2>Send you feedback</h2>
+    <form class="centered-table-form" name="contactsForm">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input type="text" name="name" ng-model="data.name" required />
+                </td>
+                <td>
+                    <span class="form-error" ng-show="contactsForm.name.$error.required && contactsForm.name.$dirty">*</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>
+                    <input type="email" name="email" ng-model="data.email" required />
+                </td>
+                <td>
+                    <span class="form-error" ng-show="contactsForm.email.$error.required && contactsForm.email.$dirty">*</span>
+                    <span class="form-error" ng-show="!contactsForm.email.$error.required && contactsForm.email.$error.email && contactsForm.email.$dirty">Invalid email</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Message</td>
+                <td>
+                    <textarea cols="30" rows="10" required name="message" ng-model="data.message"></textarea>
+                </td>
+                <td>
+                    <span class="form-error" ng-show="contactsForm.message.$error.required && contactsForm.message.$dirty">Write message</span>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="button" name="submit" value="Submit" ng-disabled="!contactsForm.$valid" ng-click="submit()" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+</div>

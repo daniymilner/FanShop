@@ -1,35 +1,35 @@
 'use strict';
 
 angular
-	.module('shopApp').config(function($stateProvider, $urlRouterProvider, $httpProvider, $compileProvider){
-		$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension|data):/);
-		//$httpProvider.interceptors.push('shopAppHttp');
-		$urlRouterProvider.otherwise('/');
+	.module('shopApp').config(function ($stateProvider, $urlRouterProvider, $httpProvider, $compileProvider) {
+	    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension|data):/);
+	    //$httpProvider.interceptors.push('shopAppHttp');
+	    $urlRouterProvider.otherwise('/');
 
-		$stateProvider
+	    $stateProvider
 			.state('home', {
-				url:'/',
-				title: 'home',
-				views:{
-					login: {
-						templateUrl: 'app/views/login.html'
-					},
-					content:{
-						templateUrl:'app/views/home.html'
-					}
-				}
+			    url: '/',
+			    title: 'Home',
+			    views: {
+			        login: {
+			            templateUrl: 'app/views/login.html'
+			        },
+			        content: {
+			            templateUrl: 'app/views/home.html'
+			        }
+			    }
 			})
 			.state('registration', {
-				url: '/registration',
-				title: 'Registration',
-				views: {
-					login: {
-						templateUrl: 'app/views/login.html'
-					},
-					content: {
-						templateUrl: 'app/views/registration.html'
-					}
-				}
+			    url: '/registration',
+			    title: 'Registration',
+			    views: {
+			        login: {
+			            templateUrl: 'app/views/login.html'
+			        },
+			        content: {
+			            templateUrl: 'app/views/registration.html'
+			        }
+			    }
 			})
 			.state('foggotPassword', {
 			    url: '/foggot',
@@ -44,15 +44,27 @@ angular
 			    }
 			})
 			.state('products', {
-				url:'/products',
-				title: 'products',
-				views: {
-				    login: {
-				        templateUrl: 'app/views/login.html'
-				    },
-					content:{
-						templateUrl:'app/views/products.html'
-					}
-				}
-			});
+			    url: '/products',
+			    title: 'Products',
+			    views: {
+			        login: {
+			            templateUrl: 'app/views/login.html'
+			        },
+			        content: {
+			            templateUrl: 'app/views/products.html'
+			        }
+			    }
+			})
+	        .state('contacts', {
+	            url: '/contacts',
+	            title: 'Contacts',
+	            views: {
+	                login: {
+	                    templateUrl: 'app/views/login.html'
+	                },
+	                content: {
+	                    templateUrl: 'app/views/contacts.html'
+	                }
+	            }
+	        });
 	});
