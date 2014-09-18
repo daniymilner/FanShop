@@ -144,6 +144,7 @@
     <Content Include="app\js\controllers\foggot.ctrl.js" />
     <Content Include="app\js\controllers\login.ctrl.js" />
     <Content Include="app\js\controllers\menu.ctrl.js" />
+    <Content Include="app\js\controllers\profile.ctrl.js" />
     <Content Include="app\js\controllers\registration.ctrl.js" />
     <Content Include="app\js\directives.js" />
     <Content Include="app\js\factory.js" />
@@ -200,6 +201,7 @@
     <Content Include="app\views\home.html" />
     <Content Include="app\views\login.html" />
     <Content Include="app\views\products.html" />
+    <Content Include="app\views\profile.html" />
     <Content Include="app\views\registration.html" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />

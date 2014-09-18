@@ -76,6 +76,6 @@ h2 {
                 width: 150px;
             }
 
-        .centered-table-form table tr:last-child td {
+        .centered-table-form:not(.not-right) table tr:last-child td {
             text-align: right;
         }

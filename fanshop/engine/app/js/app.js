@@ -66,5 +66,17 @@ angular
 	                    templateUrl: 'app/views/contacts.html'
 	                }
 	            }
+	        })
+	        .state('profile', {
+	            url: '/profile',
+	            title: 'Profile',
+	            views: {
+	                login: {
+	                    templateUrl: 'app/views/login.html'
+	                },
+	                content: {
+	                    templateUrl: 'app/views/profile.html'
+	                }
+	            }
 	        });
 	});

@@ -16,7 +16,7 @@
 			<div class="login-block" ui-view="login" ng-if="!$user"></div>
 			<div class="hello-block" ng-if="$user">
 				<p class="name">
-					Привіт, <span>{{$user.name}}</span>!
+					Привіт, <a ui-sref="profile()">{{$user.name}}</a>!
 				</p>
 			</div>
 		</nav>
@@ -37,5 +37,6 @@
     <script src="app/js/controllers/login.ctrl.js"></script>
     <script src="app/js/controllers/foggot.ctrl.js"></script>
     <script src="app/js/controllers/contacts.ctrl.js"></script>
+    <script src="app/js/controllers/profile.ctrl.js"></script>
 </body>
 </html>
