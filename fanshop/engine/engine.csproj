@@ -140,10 +140,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\js\app.js" />
+    <Content Include="app\js\controllers\category.ctrl.js" />
     <Content Include="app\js\controllers\contacts.ctrl.js" />
     <Content Include="app\js\controllers\foggot.ctrl.js" />
     <Content Include="app\js\controllers\login.ctrl.js" />
     <Content Include="app\js\controllers\menu.ctrl.js" />
+    <Content Include="app\js\controllers\products.ctrl.js" />
     <Content Include="app\js\controllers\profile.ctrl.js" />
     <Content Include="app\js\controllers\registration.ctrl.js" />
     <Content Include="app\js\directives.js" />
@@ -185,7 +187,9 @@
     <Content Include="app\js\lib\spectrum.js" />
     <Content Include="app\js\lib\ui-bootstrap-tpls-0.10.0.min.js" />
     <Content Include="app\js\module.js" />
+    <Content Include="app\media\images\categories\ball.jpg" />
     <Content Include="app\media\images\fc_dynamo_kyiv.png" />
+    <Content Include="app\styles\category.css" />
     <Content Include="app\styles\common\fonts.css" />
     <Content Include="app\styles\common\general.css" />
     <Content Include="app\styles\common\menu.css" />
@@ -196,6 +200,7 @@
     <Content Include="app\styles\login.css" />
     <Content Include="app\styles\import.css" />
     <Content Include="app\styles\registration.css" />
+    <Content Include="app\views\category.html" />
     <Content Include="app\views\contacts.html" />
     <Content Include="app\views\foggotPassword.html" />
     <Content Include="app\views\home.html" />

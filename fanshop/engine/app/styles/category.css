@@ -1,0 +1,23 @@
+﻿.category-wrapper {
+}
+
+    .category-wrapper .category-list {
+        margin-left: 20px;
+    }
+
+        .category-wrapper .category-list .category-block {
+            float: left;
+            margin-right: 40px;
+            margin-bottom: 15px;
+            cursor:pointer;
+        }
+
+    .category-wrapper .category-block img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .category-wrapper .category-block .name {
+        font-size: 20px;
+        text-align: center;
+    }

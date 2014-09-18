@@ -10,7 +10,7 @@
 		<nav class="main-menu" ng-controller="menuController as menu">
 			<ul>
 				<li ui-sref='home()'>Home</li>
-				<li ui-sref='products()'>Products</li>
+				<li ui-sref='category()'>Products</li>
                 <li ui-sref='contacts()'>Contacts</li>
 			</ul>
 			<div class="login-block" ui-view="login" ng-if="!$user"></div>
@@ -38,5 +38,7 @@
     <script src="app/js/controllers/foggot.ctrl.js"></script>
     <script src="app/js/controllers/contacts.ctrl.js"></script>
     <script src="app/js/controllers/profile.ctrl.js"></script>
+    <script src="app/js/controllers/category.ctrl.js"></script>
+    <script src="app/js/controllers/products.ctrl.js"></script>
 </body>
 </html>

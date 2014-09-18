@@ -44,7 +44,7 @@ angular
 			    }
 			})
 			.state('products', {
-			    url: '/products',
+			    url: '/products/:categoryId',
 			    title: 'Products',
 			    views: {
 			        login: {
@@ -76,6 +76,18 @@ angular
 	                },
 	                content: {
 	                    templateUrl: 'app/views/profile.html'
+	                }
+	            }
+	        })
+	        .state('category', {
+	            url: '/category',
+	            title: 'Category',
+	            views: {
+	                login: {
+	                    templateUrl: 'app/views/login.html'
+	                },
+	                content: {
+	                    templateUrl: 'app/views/category.html'
 	                }
 	            }
 	        });

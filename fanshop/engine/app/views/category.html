@@ -1,0 +1,9 @@
+﻿<div class="category-wrapper" ng-controller="categoryController as category">
+    <h1>Product categories</h1>
+    <div class="category-list">
+        <div class="category-block" ng-repeat="item in list" ng-click="goto(item.id)">
+            <img ng-src="app/media/images/categories/{{item.key}}.jpg" alt="{{item.name}}" />
+            <p class="name">{{item.name}}</p>
+        </div>
+    </div>
+</div>
