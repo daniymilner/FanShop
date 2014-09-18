@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "engine", "engine\engine.csproj", "{CDEE0014-6C8B-4288-BCA0-3D731CBFDF16}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dataAccess", "dataAccess\dataAccess.csproj", "{FC144C07-D219-4DD3-8ACB-BEAA813715EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{CDEE0014-6C8B-4288-BCA0-3D731CBFDF16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDEE0014-6C8B-4288-BCA0-3D731CBFDF16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDEE0014-6C8B-4288-BCA0-3D731CBFDF16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC144C07-D219-4DD3-8ACB-BEAA813715EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC144C07-D219-4DD3-8ACB-BEAA813715EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC144C07-D219-4DD3-8ACB-BEAA813715EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC144C07-D219-4DD3-8ACB-BEAA813715EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

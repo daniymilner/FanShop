@@ -4,9 +4,11 @@ angular.module('shopApp').controller('registrationController',
 	['$scope', '$http', '$rootScope', function ($scope, $http, $rootScope) {
 	    $scope.user = {
 	        login: '',
-            email: '',
-            password: '',
-            password_c: ''
+	        email: '',
+	        name: '',
+	        surname: '',
+	        password: '',
+	        password_c: ''
 	    };
 	    $scope.register = function () {
 	        console.log($scope.user);

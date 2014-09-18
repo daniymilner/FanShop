@@ -24,6 +24,28 @@
                 </td>
             </tr>
             <tr>
+                <td>Name</td>
+                <td>
+                    <input type="text" name="name" ng-model="user.name" ng-minlength="2" ng-maxlength="20" ng-pattern="/^[A-z][A-z0-9]*$/" required />
+                </td>
+                <td>
+                    <span class="form-error" ng-show="registerForm.name.$error.required && registerForm.name.$dirty">*</span>
+                    <span class="form-error" ng-show="!registerForm.name.$error.minLength && !registerForm.name.$error.maxLength && registerForm.name.$error.pattern && registerForm.name.$dirty">Must start with a letter, and contain letters &amp; numbers only.</span>
+                    <span class="form-error" ng-show="!registerForm.name.$error.required && (registerForm.name.$error.minlength || registerForm.name.$error.maxlength) && registerForm.name.$dirty">Name must be between 2 and 20 characters.</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Surname</td>
+                <td>
+                    <input type="text" name="surname" ng-model="user.surname" ng-minlength="2" ng-maxlength="20" ng-pattern="/^[A-z][A-z0-9]*$/" required />
+                </td>
+                <td>
+                    <span class="form-error" ng-show="registerForm.surname.$error.required && registerForm.surname.$dirty">*</span>
+                    <span class="form-error" ng-show="!registerForm.surname.$error.minLength && !registerForm.surname.$error.maxLength && registerForm.surname.$error.pattern && registerForm.surname.$dirty">Must start with a letter, and contain letters &amp; numbers only.</span>
+                    <span class="form-error" ng-show="!registerForm.surname.$error.required && (registerForm.surname.$error.minlength || registerForm.surname.$error.maxlength) && registerForm.surname.$dirty">Surname must be between 2 and 20 characters.</span>
+                </td>
+            </tr>
+            <tr>
                 <td>Password</td>
                 <td>
                     <input type="password" name="password" ng-model="user.password" ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required />
