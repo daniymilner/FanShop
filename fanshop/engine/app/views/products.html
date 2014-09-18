@@ -1,3 +1,14 @@
 <div class="products-wrapper" ng-controller="productsController as products">
     <h1>Products</h1>
+    <div class="products-block">
+        <div class="product-item" ng-repeat="item in viewList" ng-click="view(item.key)">
+            <img ng-src="app/media/images/products/{{item.key}}.jpg" alt="{{item.title}}" />
+            <p class="title">{{item.title}}</p>
+            <p class="price">{{item.price}}</p>
+            <div class="color" ng-style="{background:item.color}"></div>
+        </div>
+    </div>
+    <ul class="paginator">
+        <li ng-repeat="page in pages" ng-click="goto(page)" ng-class="{active:page == currentPage}">{{page}}</li>
+    </ul>
 </div>

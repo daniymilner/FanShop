@@ -49,6 +49,10 @@ h2 {
     text-align: center;
 }
 
+ul {
+    list-style: none;
+}
+
 .form-error {
     position: absolute;
     width: 200px;
@@ -76,6 +80,25 @@ h2 {
                 width: 150px;
             }
 
-        .centered-table-form:not(.not-right) table tr:last-child td {
-            text-align: right;
+    .centered-table-form:not(.not-right) table tr:last-child td {
+        text-align: right;
+    }
+
+.paginator {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+}
+
+    .paginator li {
+        text-decoration: underline;
+        text-align: center;
+        width: 30px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+        .paginator li.active {
+            color: red;
         }

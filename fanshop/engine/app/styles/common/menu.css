@@ -1,33 +1,33 @@
-.main-menu{
-	height: 170px;
-	display: -webkit-box;
-	-webkit-box-align: center;
-	-webkit-box-pack: center;
-	background: #74A0FC url("../../media/images/fc_dynamo_kyiv.png") no-repeat 80px 10px;
-	background-size: 103px 170px;
-	padding: 10px 0;
-	position: relative;
+.main-menu {
+    height: 170px;
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    background: #74A0FC url("../../media/images/fc_dynamo_kyiv.png") no-repeat 80px 10px;
+    background-size: 103px 170px;
+    padding: 10px 0;
+    position: relative;
 }
 
-.main-menu ul{
-	display: -webkit-box;
-	height: 50px;
-}
+    .main-menu ul {
+        display: -webkit-box;
+        height: 50px;
+    }
 
-.main-menu ul li{
-	width: 150px;
-	height: 100%;
-	display: -webkit-box;
-	-webkit-box-align: center;
-	-webkit-box-pack: center;
-	text-transform: uppercase;
-	border-radius: 10px;
-	font-size: 19px;
-	color: #ffffff;
-}
+        .main-menu ul li {
+            width: 150px;
+            height: 100%;
+            display: -webkit-box;
+            -webkit-box-align: center;
+            -webkit-box-pack: center;
+            text-transform: uppercase;
+            border-radius: 10px;
+            font-size: 19px;
+            color: #ffffff;
+        }
 
-.main-menu ul li:hover{
-	background: #fff;
-	cursor: pointer;
-	color: #74A0FC;
-}
+            .main-menu ul li:hover {
+                background: #fff;
+                cursor: pointer;
+                color: #74A0FC;
+            }

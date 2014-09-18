@@ -44,7 +44,7 @@ angular
 			    }
 			})
 			.state('products', {
-			    url: '/products/:categoryId',
+			    url: '/products/:categoryKey',
 			    title: 'Products',
 			    views: {
 			        login: {

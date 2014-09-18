@@ -199,6 +199,7 @@
     <Content Include="app\styles\home.css" />
     <Content Include="app\styles\login.css" />
     <Content Include="app\styles\import.css" />
+    <Content Include="app\styles\products.css" />
     <Content Include="app\styles\registration.css" />
     <Content Include="app\views\category.html" />
     <Content Include="app\views\contacts.html" />

@@ -28,7 +28,7 @@ angular.module('shopApp').controller('categoryController',
 	        key: 'scarves'
 	    }];
 
-	    $scope.goto = function (categoryId) {
-	        $rootScope.$state.go('products', { categoryId: categoryId });
+	    $scope.goto = function (categoryKey) {
+	        $rootScope.$state.go('products', { categoryKey: categoryKey });
 	    };
 	}]);
