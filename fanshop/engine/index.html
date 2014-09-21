@@ -15,9 +15,10 @@
 			</ul>
 			<div class="login-block" ui-view="login" ng-if="!$user"></div>
 			<div class="hello-block" ng-if="$user">
-				<p class="name">
-					Привіт, <a ui-sref="profile()">{{$user.name}}</a>!
-				</p>
+			    <p class="name">
+			        Привіт, <a ui-sref="profile()">{{$user.Name}}</a>!
+			    </p>
+			    <a ng-click="Auth.signOut()" style="color:#fff">Sign Out</a>
 			</div>
 		</nav>
 		<div class="content-wrapper">

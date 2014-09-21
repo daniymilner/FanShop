@@ -17,6 +17,22 @@ namespace dataAccess.Repository
             }
         }
 
+        public Users GetUserByEmail(string email)
+        {
+            using (var db = new ShopDataContext())
+            {
+                return db.Users.FirstOrDefault(z => z.Email == email);
+            }
+        }
+
+        public Users GetUserByLogin(string login)
+        {
+            using (var db = new ShopDataContext())
+            {
+                return db.Users.FirstOrDefault(z => z.Login == login);
+            }
+        }
+
         public void CreateUser(Users user)
         {
             using (var db = new ShopDataContext())

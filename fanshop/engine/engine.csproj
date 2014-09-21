@@ -229,10 +229,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="API\UserController.cs" />
+    <Compile Include="DefaultController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

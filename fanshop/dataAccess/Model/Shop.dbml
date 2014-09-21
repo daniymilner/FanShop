@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="fanshop" Class="ShopDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=DANIEL-PC;Initial Catalog=fanshop;Integrated Security=True;Pooling=False" SettingsObjectName="dataAccess.Properties.Settings" SettingsPropertyName="fanshopConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Basket" Member="Basket">
+    <Type Name="Basket">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.Users" Member="Users">
     <Type Name="Users">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -10,17 +18,6 @@
       <Column Name="Password" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="IsAdmin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Association Name="Users_Basket" Member="Basket" ThisKey="Id" OtherKey="UserId" Type="Basket" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Basket" Member="Basket">
-    <Type Name="Basket">
-      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Total" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
-      <Association Name="Basket_BasketLine" Member="BasketLine" ThisKey="Id" OtherKey="BasketId" Type="BasketLine" />
-      <Association Name="Users_Basket" Member="Users" ThisKey="UserId" OtherKey="Id" Type="Users" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.BasketLine" Member="BasketLine">
@@ -29,8 +26,6 @@
       <Column Name="ProductId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="BasketId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="Count" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Basket_BasketLine" Member="Basket" ThisKey="BasketId" OtherKey="Id" Type="Basket" IsForeignKey="true" />
-      <Association Name="Products_BasketLine" Member="Products" ThisKey="ProductId" OtherKey="Id" Type="Products" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Category" Member="Category">
@@ -38,7 +33,6 @@
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="PublicKey" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Association Name="Category_Products" Member="Products" ThisKey="Id" OtherKey="CategoryId" Type="Products" />
     </Type>
   </Table>
   <Table Name="dbo.Products" Member="Products">
@@ -51,8 +45,6 @@
       <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="CategoryId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
       <Column Name="PublicKey" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
-      <Association Name="Products_BasketLine" Member="BasketLine" ThisKey="Id" OtherKey="ProductId" Type="BasketLine" />
-      <Association Name="Category_Products" Member="Category" ThisKey="CategoryId" OtherKey="Id" Type="Category" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

@@ -30,12 +30,12 @@ namespace dataAccess.Model
 		
     #region Определения метода расширяемости
     partial void OnCreated();
-    partial void InsertUsers(Users instance);
-    partial void UpdateUsers(Users instance);
-    partial void DeleteUsers(Users instance);
     partial void InsertBasket(Basket instance);
     partial void UpdateBasket(Basket instance);
     partial void DeleteBasket(Basket instance);
+    partial void InsertUsers(Users instance);
+    partial void UpdateUsers(Users instance);
+    partial void DeleteUsers(Users instance);
     partial void InsertBasketLine(BasketLine instance);
     partial void UpdateBasketLine(BasketLine instance);
     partial void DeleteBasketLine(BasketLine instance);
@@ -77,19 +77,19 @@ namespace dataAccess.Model
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Users> Users
-		{
-			get
-			{
-				return this.GetTable<Users>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Basket> Basket
 		{
 			get
 			{
 				return this.GetTable<Basket>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Users> Users
+		{
+			get
+			{
+				return this.GetTable<Users>();
 			}
 		}
 		
@@ -118,6 +118,140 @@ namespace dataAccess.Model
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Basket")]
+	public partial class Basket : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _Id;
+		
+		private System.Guid _UserId;
+		
+		private System.DateTime _Date;
+		
+		private decimal _Total;
+		
+    #region Определения метода расширяемости
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanged();
+    partial void OnUserIdChanging(System.Guid value);
+    partial void OnUserIdChanged();
+    partial void OnDateChanging(System.DateTime value);
+    partial void OnDateChanged();
+    partial void OnTotalChanging(decimal value);
+    partial void OnTotalChanged();
+    #endregion
+		
+		public Basket()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime NOT NULL")]
+		public System.DateTime Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Decimal(18,2) NOT NULL")]
+		public decimal Total
+		{
+			get
+			{
+				return this._Total;
+			}
+			set
+			{
+				if ((this._Total != value))
+				{
+					this.OnTotalChanging(value);
+					this.SendPropertyChanging();
+					this._Total = value;
+					this.SendPropertyChanged("Total");
+					this.OnTotalChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
 	public partial class Users : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -139,8 +273,6 @@ namespace dataAccess.Model
 		private System.DateTime _CreateDate;
 		
 		private bool _IsAdmin;
-		
-		private EntitySet<Basket> _Basket;
 		
     #region Определения метода расширяемости
     partial void OnLoaded();
@@ -166,7 +298,6 @@ namespace dataAccess.Model
 		
 		public Users()
 		{
-			this._Basket = new EntitySet<Basket>(new Action<Basket>(this.attach_Basket), new Action<Basket>(this.detach_Basket));
 			OnCreated();
 		}
 		
@@ -330,19 +461,6 @@ namespace dataAccess.Model
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Users_Basket", Storage="_Basket", ThisKey="Id", OtherKey="UserId")]
-		public EntitySet<Basket> Basket
-		{
-			get
-			{
-				return this._Basket;
-			}
-			set
-			{
-				this._Basket.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -361,221 +479,6 @@ namespace dataAccess.Model
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Basket(Basket entity)
-		{
-			this.SendPropertyChanging();
-			entity.Users = this;
-		}
-		
-		private void detach_Basket(Basket entity)
-		{
-			this.SendPropertyChanging();
-			entity.Users = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Basket")]
-	public partial class Basket : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _Id;
-		
-		private System.Guid _UserId;
-		
-		private System.DateTime _Date;
-		
-		private decimal _Total;
-		
-		private EntitySet<BasketLine> _BasketLine;
-		
-		private EntityRef<Users> _Users;
-		
-    #region Определения метода расширяемости
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(System.Guid value);
-    partial void OnIdChanged();
-    partial void OnUserIdChanging(System.Guid value);
-    partial void OnUserIdChanged();
-    partial void OnDateChanging(System.DateTime value);
-    partial void OnDateChanged();
-    partial void OnTotalChanging(decimal value);
-    partial void OnTotalChanged();
-    #endregion
-		
-		public Basket()
-		{
-			this._BasketLine = new EntitySet<BasketLine>(new Action<BasketLine>(this.attach_BasketLine), new Action<BasketLine>(this.detach_BasketLine));
-			this._Users = default(EntityRef<Users>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					if (this._Users.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._UserId = value;
-					this.SendPropertyChanged("UserId");
-					this.OnUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime NOT NULL")]
-		public System.DateTime Date
-		{
-			get
-			{
-				return this._Date;
-			}
-			set
-			{
-				if ((this._Date != value))
-				{
-					this.OnDateChanging(value);
-					this.SendPropertyChanging();
-					this._Date = value;
-					this.SendPropertyChanged("Date");
-					this.OnDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Decimal(18,2) NOT NULL")]
-		public decimal Total
-		{
-			get
-			{
-				return this._Total;
-			}
-			set
-			{
-				if ((this._Total != value))
-				{
-					this.OnTotalChanging(value);
-					this.SendPropertyChanging();
-					this._Total = value;
-					this.SendPropertyChanged("Total");
-					this.OnTotalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Basket_BasketLine", Storage="_BasketLine", ThisKey="Id", OtherKey="BasketId")]
-		public EntitySet<BasketLine> BasketLine
-		{
-			get
-			{
-				return this._BasketLine;
-			}
-			set
-			{
-				this._BasketLine.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Users_Basket", Storage="_Users", ThisKey="UserId", OtherKey="Id", IsForeignKey=true)]
-		public Users Users
-		{
-			get
-			{
-				return this._Users.Entity;
-			}
-			set
-			{
-				Users previousValue = this._Users.Entity;
-				if (((previousValue != value) 
-							|| (this._Users.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Users.Entity = null;
-						previousValue.Basket.Remove(this);
-					}
-					this._Users.Entity = value;
-					if ((value != null))
-					{
-						value.Basket.Add(this);
-						this._UserId = value.Id;
-					}
-					else
-					{
-						this._UserId = default(System.Guid);
-					}
-					this.SendPropertyChanged("Users");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_BasketLine(BasketLine entity)
-		{
-			this.SendPropertyChanging();
-			entity.Basket = this;
-		}
-		
-		private void detach_BasketLine(BasketLine entity)
-		{
-			this.SendPropertyChanging();
-			entity.Basket = null;
 		}
 	}
 	
@@ -593,10 +496,6 @@ namespace dataAccess.Model
 		
 		private int _Count;
 		
-		private EntityRef<Basket> _Basket;
-		
-		private EntityRef<Products> _Products;
-		
     #region Определения метода расширяемости
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -613,8 +512,6 @@ namespace dataAccess.Model
 		
 		public BasketLine()
 		{
-			this._Basket = default(EntityRef<Basket>);
-			this._Products = default(EntityRef<Products>);
 			OnCreated();
 		}
 		
@@ -649,10 +546,6 @@ namespace dataAccess.Model
 			{
 				if ((this._ProductId != value))
 				{
-					if (this._Products.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnProductIdChanging(value);
 					this.SendPropertyChanging();
 					this._ProductId = value;
@@ -673,10 +566,6 @@ namespace dataAccess.Model
 			{
 				if ((this._BasketId != value))
 				{
-					if (this._Basket.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnBasketIdChanging(value);
 					this.SendPropertyChanging();
 					this._BasketId = value;
@@ -702,74 +591,6 @@ namespace dataAccess.Model
 					this._Count = value;
 					this.SendPropertyChanged("Count");
 					this.OnCountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Basket_BasketLine", Storage="_Basket", ThisKey="BasketId", OtherKey="Id", IsForeignKey=true)]
-		public Basket Basket
-		{
-			get
-			{
-				return this._Basket.Entity;
-			}
-			set
-			{
-				Basket previousValue = this._Basket.Entity;
-				if (((previousValue != value) 
-							|| (this._Basket.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Basket.Entity = null;
-						previousValue.BasketLine.Remove(this);
-					}
-					this._Basket.Entity = value;
-					if ((value != null))
-					{
-						value.BasketLine.Add(this);
-						this._BasketId = value.Id;
-					}
-					else
-					{
-						this._BasketId = default(System.Guid);
-					}
-					this.SendPropertyChanged("Basket");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Products_BasketLine", Storage="_Products", ThisKey="ProductId", OtherKey="Id", IsForeignKey=true)]
-		public Products Products
-		{
-			get
-			{
-				return this._Products.Entity;
-			}
-			set
-			{
-				Products previousValue = this._Products.Entity;
-				if (((previousValue != value) 
-							|| (this._Products.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Products.Entity = null;
-						previousValue.BasketLine.Remove(this);
-					}
-					this._Products.Entity = value;
-					if ((value != null))
-					{
-						value.BasketLine.Add(this);
-						this._ProductId = value.Id;
-					}
-					else
-					{
-						this._ProductId = default(System.Guid);
-					}
-					this.SendPropertyChanged("Products");
 				}
 			}
 		}
@@ -807,8 +628,6 @@ namespace dataAccess.Model
 		
 		private string _PublicKey;
 		
-		private EntitySet<Products> _Products;
-		
     #region Определения метода расширяемости
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -823,7 +642,6 @@ namespace dataAccess.Model
 		
 		public Category()
 		{
-			this._Products = new EntitySet<Products>(new Action<Products>(this.attach_Products), new Action<Products>(this.detach_Products));
 			OnCreated();
 		}
 		
@@ -887,19 +705,6 @@ namespace dataAccess.Model
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category_Products", Storage="_Products", ThisKey="Id", OtherKey="CategoryId")]
-		public EntitySet<Products> Products
-		{
-			get
-			{
-				return this._Products;
-			}
-			set
-			{
-				this._Products.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -918,18 +723,6 @@ namespace dataAccess.Model
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Products(Products entity)
-		{
-			this.SendPropertyChanging();
-			entity.Category = this;
-		}
-		
-		private void detach_Products(Products entity)
-		{
-			this.SendPropertyChanging();
-			entity.Category = null;
 		}
 	}
 	
@@ -955,10 +748,6 @@ namespace dataAccess.Model
 		
 		private string _PublicKey;
 		
-		private EntitySet<BasketLine> _BasketLine;
-		
-		private EntityRef<Category> _Category;
-		
     #region Определения метода расширяемости
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -983,8 +772,6 @@ namespace dataAccess.Model
 		
 		public Products()
 		{
-			this._BasketLine = new EntitySet<BasketLine>(new Action<BasketLine>(this.attach_BasketLine), new Action<BasketLine>(this.detach_BasketLine));
-			this._Category = default(EntityRef<Category>);
 			OnCreated();
 		}
 		
@@ -1119,10 +906,6 @@ namespace dataAccess.Model
 			{
 				if ((this._CategoryId != value))
 				{
-					if (this._Category.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnCategoryIdChanging(value);
 					this.SendPropertyChanging();
 					this._CategoryId = value;
@@ -1152,53 +935,6 @@ namespace dataAccess.Model
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Products_BasketLine", Storage="_BasketLine", ThisKey="Id", OtherKey="ProductId")]
-		public EntitySet<BasketLine> BasketLine
-		{
-			get
-			{
-				return this._BasketLine;
-			}
-			set
-			{
-				this._BasketLine.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Category_Products", Storage="_Category", ThisKey="CategoryId", OtherKey="Id", IsForeignKey=true)]
-		public Category Category
-		{
-			get
-			{
-				return this._Category.Entity;
-			}
-			set
-			{
-				Category previousValue = this._Category.Entity;
-				if (((previousValue != value) 
-							|| (this._Category.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Category.Entity = null;
-						previousValue.Products.Remove(this);
-					}
-					this._Category.Entity = value;
-					if ((value != null))
-					{
-						value.Products.Add(this);
-						this._CategoryId = value.Id;
-					}
-					else
-					{
-						this._CategoryId = default(System.Guid);
-					}
-					this.SendPropertyChanged("Category");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1217,18 +953,6 @@ namespace dataAccess.Model
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_BasketLine(BasketLine entity)
-		{
-			this.SendPropertyChanging();
-			entity.Products = this;
-		}
-		
-		private void detach_BasketLine(BasketLine entity)
-		{
-			this.SendPropertyChanging();
-			entity.Products = null;
 		}
 	}
 }

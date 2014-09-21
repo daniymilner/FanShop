@@ -11,15 +11,25 @@ angular.module('shopApp').controller('registrationController',
 	        password_c: ''
 	    };
 	    $scope.register = function () {
-	        console.log($scope.user);
-	        $http({
-	            method: "POST",
-	            url: "/api/user/registration",
-	            data: angular.copy($scope.user)
+	        $rootScope.Auth.signUp($scope.user, function (data, status) {
+	            if (!data && status == 200) {
+	                $rootScope.$state.go('home');
+	            }
+	            else {
+	                if (status == 412) {
+	                    console.log(data);
+	                    switch (data) {
+	                        case 'login':
+	                            break;
+	                        case 'email':
+	                            break;
+	                        case 'password':
+	                            break;
+	                        default:
+                                break;
+	                    }
+	                }
+	            }
 	        });
-	        //.success(function () {
-	        //    $rootScope.Auth.signIn($scope.user.login, $scope.user.password);
-	        //    $rootScope.$state.go('home');
-	        //})
 	    };
 	}]);

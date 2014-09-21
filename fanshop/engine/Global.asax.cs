@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.Optimization;
 using System.Web.Routing;
-using System.Web.Security;
 using System.Web.Http;
-using engine;
 
 namespace engine
 {
@@ -15,11 +10,30 @@ namespace engine
         void Application_Start(object sender, EventArgs e)
         {
             // Код, выполняемый при запуске приложения
-            RouteTable.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{data}",
-                defaults: new { data = System.Web.Http.RouteParameter.Optional }
-                );
+            InitRouting(RouteTable.Routes);
+        }
+
+        private static void InitRouting(RouteCollection routes)
+        {
+            routes.MapHttpRoute("Registration", "api/{controller}/{action}/{id}", new
+               {
+                   controller = "User",
+                   action = "Registration",
+                   id = RouteParameter.Optional
+               });
+
+            routes.MapHttpRoute("UserInfo", "api/{controller}/{action}", new
+                {
+                    controller = "User",
+                    action = "GetUserInfo"
+                });
+
+            routes.MapHttpRoute("SignIn", "api/{controller}/{action}/{id}", new
+                {
+                    controller = "User",
+                    action = "SignIn",
+                    id = RouteParameter.Optional
+                });
         }
 
         void Application_End(object sender, EventArgs e)

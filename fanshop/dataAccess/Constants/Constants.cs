@@ -8,6 +8,9 @@ namespace dataAccess.Constants
 {
     public static class Constants
     {
-        public const string salt = "salt";
+        public const string Login = "login";
+        public const string Email = "email";
+        public const string Password = "password";
+        public const string Salt = "salt";
     }
 }

@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\Constants.cs" />
+    <Compile Include="Helpers\Converter.cs" />
+    <Compile Include="Helpers\HashHelper.cs" />
     <Compile Include="Model\Shop.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
