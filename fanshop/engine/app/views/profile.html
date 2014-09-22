@@ -1,14 +1,22 @@
-﻿<div class="profile-wrapper" ng-controller="profileController as profile">
+﻿<div class="profile-wrapper">
     <h1>Profile</h1>
     <form class="centered-table-form not-right">
         <table>
             <tr>
                 <td>Login</td>
-                <td>{{user.login}}</td>
+                <td>{{$user.Login}}</td>
             </tr>
             <tr>
                 <td>Email</td>
-                <td>{{user.email}}</td>
+                <td>{{$user.Email}}</td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>{{$user.Name}}</td>
+            </tr>
+            <tr>
+                <td>Surname</td>
+                <td>{{$user.Surname}}</td>
             </tr>
         </table>
     </form>

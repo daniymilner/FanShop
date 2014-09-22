@@ -2,7 +2,7 @@
 <html ng-app="shopApp">
 <head>
 	<meta charset="UTF-8">
-	<title></title>
+	<title>Fan shop</title>
 	<link rel="stylesheet" href="app/styles/import.css"/>
 </head>
 <body>
@@ -15,7 +15,7 @@
 			</ul>
 			<div class="login-block" ui-view="login" ng-if="!$user"></div>
 			<div class="hello-block" ng-if="$user">
-			    <p class="name">Hello, {{$user.Name}}</p>
+			    <p class="name">Hello, {{$user.Login}}</p>
                 <p ui-sref="profile()" class="profile">Profile</p>
 			    <a ng-click="Auth.signOut()" class="signout">Sign Out</a>
 			</div>
@@ -37,7 +37,6 @@
     <script src="app/js/controllers/login.ctrl.js"></script>
     <script src="app/js/controllers/foggot.ctrl.js"></script>
     <script src="app/js/controllers/contacts.ctrl.js"></script>
-    <script src="app/js/controllers/profile.ctrl.js"></script>
     <script src="app/js/controllers/category.ctrl.js"></script>
     <script src="app/js/controllers/products.ctrl.js"></script>
     <script src="app/js/controllers/details.ctrl.js"></script>

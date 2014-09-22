@@ -6,7 +6,7 @@ angular.module('shopApp', [
         'UserValidation'
 	]).run(
 	['$rootScope', '$state', '$stateParams', 'Auth',
-		function($rootScope, $state, $stateParams, Auth){
+		function ($rootScope, $state, $stateParams, Auth) {
 			Auth.authorize();
 			$rootScope.Auth = Auth;
 			$rootScope.$state = $state;
