@@ -102,3 +102,29 @@ ul {
         .paginator li.active {
             color: red;
         }
+
+.hello-block {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    text-align: right;
+}
+
+    .hello-block .name a {
+        cursor: pointer;
+    }
+
+    .hello-block .profile,
+    .hello-block .signout {
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .hello-block .profile {
+        margin-top: 20px;
+    }
+
+    .hello-block .profile:hover {
+        text-decoration: underline;
+    }
