@@ -1,0 +1,11 @@
+﻿<div class="details-wrapper" ng-controller="detailsController as details">
+    <h1>Details</h1>
+    <div class="detail-block">
+        <img ng-src="app/media/images/products/{{product.key}}.jpg" alt="{{product.title}}" />
+        <p class="title">{{product.title}}</p>
+        <p class="price"><span>Price:</span> {{product.price}}</p>
+        <p class="color" ng-style="{background:product.color}"></p>
+        <p class="description"><span>Description:</span> {{product.description}}</p>
+        <input type="button" class="buy-btn" name="buy" value="Add to basket" />
+    </div>
+</div>

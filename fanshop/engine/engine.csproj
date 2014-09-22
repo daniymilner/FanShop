@@ -196,6 +196,7 @@
     <Content Include="app\styles\common\menu.css" />
     <Content Include="app\styles\common\reset.css" />
     <Content Include="app\styles\contacts.css" />
+    <Content Include="app\styles\details.css" />
     <Content Include="app\styles\foggot.css" />
     <Content Include="app\styles\home.css" />
     <Content Include="app\styles\login.css" />
@@ -204,6 +205,7 @@
     <Content Include="app\styles\registration.css" />
     <Content Include="app\views\category.html" />
     <Content Include="app\views\contacts.html" />
+    <Content Include="app\views\details.html" />
     <Content Include="app\views\foggotPassword.html" />
     <Content Include="app\views\home.html" />
     <Content Include="app\views\login.html" />
@@ -221,6 +223,7 @@
     <Content Include="app\js\controllers\home.ctrl.js" />
     <Content Include="app\media\fonts\PT-Sans-Bold.ttf" />
     <Content Include="app\media\fonts\PT-Sans-Regular.ttf" />
+    <Content Include="app\js\controllers\details.ctrl.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

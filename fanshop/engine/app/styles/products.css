@@ -29,3 +29,11 @@
         height: 20px;
         border: 1px solid #74a0fc;
     }
+
+    .products-wrapper .product-item .view-btn {
+        margin-left: 50px;
+    }
+
+    .products-wrapper .product-item .buy-btn {
+        margin-left: 20px;
+    }

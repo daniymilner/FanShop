@@ -1,11 +1,13 @@
 <div class="products-wrapper" ng-controller="productsController as products">
     <h1>Products</h1>
     <div class="products-block">
-        <div class="product-item" ng-repeat="item in viewList" ng-click="view(item.key)">
+        <div class="product-item" ng-repeat="item in viewList">
             <img ng-src="app/media/images/products/{{item.key}}.jpg" alt="{{item.title}}" />
             <p class="title">{{item.title}}</p>
             <p class="price">{{item.price}}</p>
             <div class="color" ng-style="{background:item.color}"></div>
+            <input type="button" class="view-btn" name="view" value="View details" ng-click="view(item.key)"/>
+            <input type="button" class="buy-btn" name="buy" value="Add to basket" />
         </div>
     </div>
     <ul class="paginator">

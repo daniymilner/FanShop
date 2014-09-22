@@ -47,9 +47,6 @@ angular
 			    url: '/products/:categoryKey',
 			    title: 'Products',
 			    views: {
-			        login: {
-			            templateUrl: 'app/views/login.html'
-			        },
 			        content: {
 			            templateUrl: 'app/views/products.html'
 			        }
@@ -71,9 +68,6 @@ angular
 	            url: '/profile',
 	            title: 'Profile',
 	            views: {
-	                login: {
-	                    templateUrl: 'app/views/login.html'
-	                },
 	                content: {
 	                    templateUrl: 'app/views/profile.html'
 	                }
@@ -83,11 +77,17 @@ angular
 	            url: '/category',
 	            title: 'Category',
 	            views: {
-	                login: {
-	                    templateUrl: 'app/views/login.html'
-	                },
 	                content: {
 	                    templateUrl: 'app/views/category.html'
+	                }
+	            }
+	        })
+	        .state('details', {
+	            url: '/details/:productKey',
+	            title: 'Details',
+	            views: {
+	                content: {
+	                    templateUrl: 'app/views/details.html'
 	                }
 	            }
 	        });

@@ -63,7 +63,7 @@ angular.module('shopApp').controller('productsController',
 	    });
 
 	    $scope.view = function (key) {
-	        $rootScope.$state.go('', { productKey: key});
+	        $rootScope.$state.go('details', { productKey: key});
 	    };
 
 	    $scope.goto(1);
