@@ -16,16 +16,12 @@ angular.module('shopApp').controller('categoryController',
 	        key: 'scarves'
 	    }, {
 	        id: 4,
-	        name: 'Мячи',
-	        key: 'ball'
+	        name: 'Футболки',
+	        key: 'tshirt'
 	    }, {
 	        id: 5,
-	        name: 'Бутси',
-	        key: 'shoes'
-	    }, {
-	        id: 6,
-	        name: 'Шарфи',
-	        key: 'scarves'
+	        name: 'Шорты',
+	        key: 'shirt'
 	    }];
 
 	    $scope.goto = function (categoryKey) {
