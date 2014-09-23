@@ -2,19 +2,20 @@
 
 angular.module('shopApp').controller('adminCategoryController',
 	['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
-	    $scope.categoryList = [{
-	        Id: 1,
-	        Name: 'Boots',
-	        PublicKey: 'boots'
-	    }, {
-	        Id: 2,
-	        Name: 'Shorts',
-	        PublicKey: 'shorts'
-	    }, {
-	        Id: 3,
-	        Name: 'T-Shorts',
-	        PublicKey: 'tshorts'
-	    }];
+	    var deleteCategoryFromList = function (id) {
+	        for (var i = 0; i < $scope.categoryList.length; i++) {
+	            if ($scope.categoryList[i].Id == id) {
+	                $scope.categoryList.splice(i, 1);
+	                break;
+	            }
+	        }
+	    };
+	    $http({
+	        method: 'GET',
+	        url: '/api/category/getallcategories'
+	    }).success(function (data) {
+	        $scope.categoryList = data;
+	    });
 
 	    $scope.create = function () {
 	        $rootScope.$state.go('adminCategoryActions');
@@ -22,7 +23,12 @@ angular.module('shopApp').controller('adminCategoryController',
 	    $scope.edit = function (category) {
 	        $rootScope.$state.go('adminCategoryActions', { id: category.Id });
 	    };
-	    $scope.delete = function (user) {
-	       
+	    $scope.delete = function (category) {
+	        $http({
+	            method: 'POST',
+	            url: '/api/user/deleteUser/' + category.Id
+	        }).success(function () {
+	            deleteCategoryFromList(user.Id);
+	        });
 	    };
 	}]);

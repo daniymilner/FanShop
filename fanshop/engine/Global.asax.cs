@@ -30,6 +30,10 @@ namespace engine
             routes.MapHttpRoute("UpdateUser", defaultSchema);
 
             routes.MapHttpRoute("DeleteUser", defaultSchema + "/{id}");
+
+            routes.MapHttpRoute("GetAllCategories", defaultSchema);
+
+            routes.MapHttpRoute("DeleteCategory", defaultSchema + "/{id}");
         }
 
         void Application_End(object sender, EventArgs e)
