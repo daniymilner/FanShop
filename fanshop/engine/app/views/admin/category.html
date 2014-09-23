@@ -1,0 +1,26 @@
+﻿<div class="admin-category-wrapper" ng-controller="adminCategoryController as adminCategory">
+    <h1>View Categories</h1>
+    <input type="button" name="create" value="Create" ng-click="create()"/>
+    <table class="fool">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Public key</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr ng-repeat="category in categoryList">
+            <td>{{category.Id}}</td>
+            <td>{{category.Name}}</td>
+            <td>{{category.PublicKey}}</td>
+            <td>
+                <a ng-click="edit(category)">Edit</a>
+            </td>
+            <td>
+                <a ng-click="delete(category)">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>

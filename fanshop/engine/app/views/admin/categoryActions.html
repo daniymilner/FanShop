@@ -1,0 +1,32 @@
+﻿<div class="category-actions-wrapper" ng-controller="categoryActionsController as categoryActions">
+    <h1 ng-if="isCreate">Create Category</h1>
+    <h1 ng-if="!isCreate">Edit Category</h1>
+
+    <form class="centered-table-form">
+        <table>
+            <tr>
+                <td>Id</td>
+                <td>{{category.Id}}</td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input type="text" name="name" ng-model="category.Name" />
+                </td>
+            </tr>
+            <tr>
+                <td>Public key</td>
+                <td>
+                    <input type="text" name="key" ng-model="category.PublicKey" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="button" name="create" value="Create" ng-if="isCreate" ng-click="create()" />
+                    <input type="button" name="edit" value="Edit" ng-if="!isCreate" ng-click="edit()" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

@@ -141,6 +141,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\js\app.js" />
+    <Content Include="app\js\controllers\admin\category.ctrl.js" />
+    <Content Include="app\js\controllers\admin\categoryActions.ctrl.js" />
     <Content Include="app\js\controllers\admin\userActions.ctrl.js" />
     <Content Include="app\js\controllers\admin\users.ctrl.js" />
     <Content Include="app\js\controllers\category.ctrl.js" />
@@ -209,6 +211,8 @@
     <Content Include="app\styles\import.css" />
     <Content Include="app\styles\products.css" />
     <Content Include="app\styles\registration.css" />
+    <Content Include="app\views\admin\category.html" />
+    <Content Include="app\views\admin\categoryActions.html" />
     <Content Include="app\views\admin\index.html" />
     <Content Include="app\views\admin\menu.html" />
     <Content Include="app\views\admin\userActions.html" />

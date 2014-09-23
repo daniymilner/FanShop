@@ -164,5 +164,33 @@ angular
 	            },
 	            isSecure: true,
 	            isAdmin: true
+	        })
+	        .state('adminCategory', {
+	            url: '/admin/category',
+	            title: 'Admin Category',
+	            views: {
+	                content: {
+	                    templateUrl: 'app/views/admin/category.html'
+	                },
+	                menu: {
+	                    templateUrl: 'app/views/admin/menu.html'
+	                }
+	            },
+	            isSecure: true,
+	            isAdmin: true
+	        })
+	        .state('adminCategoryActions', {
+	            url: '/admin/category/actions/:id',
+	            title: 'Admin Category Actions',
+	            views: {
+	                content: {
+	                    templateUrl: 'app/views/admin/categoryActions.html'
+	                },
+	                menu: {
+	                    templateUrl: 'app/views/admin/menu.html'
+	                }
+	            },
+	            isSecure: true,
+	            isAdmin: true
 	        });
 	});
