@@ -222,7 +222,6 @@
     <Content Include="app\views\details.html" />
     <Content Include="app\views\foggotPassword.html" />
     <Content Include="app\views\home.html" />
-    <Content Include="app\views\login.html" />
     <Content Include="app\views\menu.html" />
     <Content Include="app\views\products.html" />
     <Content Include="app\views\profile.html" />

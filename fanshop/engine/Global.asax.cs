@@ -15,25 +15,21 @@ namespace engine
 
         private static void InitRouting(RouteCollection routes)
         {
-            routes.MapHttpRoute("Registration", "api/{controller}/{action}/{id}", new
-               {
-                   controller = "User",
-                   action = "Registration",
-                   id = RouteParameter.Optional
-               });
+            const string defaultSchema = "api/{controller}/{action}";
 
-            routes.MapHttpRoute("UserInfo", "api/{controller}/{action}", new
-                {
-                    controller = "User",
-                    action = "GetUserInfo"
-                });
+            routes.MapHttpRoute("Registration", defaultSchema);
 
-            routes.MapHttpRoute("SignIn", "api/{controller}/{action}/{id}", new
-                {
-                    controller = "User",
-                    action = "SignIn",
-                    id = RouteParameter.Optional
-                });
+            routes.MapHttpRoute("UserInfo", defaultSchema);
+
+            routes.MapHttpRoute("SignIn", defaultSchema);
+
+            routes.MapHttpRoute("GetAllUsers", defaultSchema);
+
+            routes.MapHttpRoute("GetUserById", defaultSchema + "/{id}");
+
+            routes.MapHttpRoute("UpdateUser", defaultSchema);
+
+            routes.MapHttpRoute("DeleteUser", defaultSchema + "/{id}");
         }
 
         void Application_End(object sender, EventArgs e)

@@ -14,3 +14,7 @@
             border: 1px solid #74a0fc;
             padding: 0 10px;
         }
+
+        table.fool tr td:first-child {
+            width: 100px;
+        }

@@ -11,9 +11,6 @@ angular
 			    url: '/',
 			    title: 'Home',
 			    views: {
-			        login: {
-			            templateUrl: 'app/views/login.html'
-			        },
 			        content: {
 			            templateUrl: 'app/views/home.html'
 			        },
@@ -27,9 +24,6 @@ angular
 			    url: '/registration',
 			    title: 'Registration',
 			    views: {
-			        login: {
-			            templateUrl: 'app/views/login.html'
-			        },
 			        content: {
 			            templateUrl: 'app/views/registration.html'
 			        },
@@ -43,9 +37,6 @@ angular
 			    url: '/foggot',
 			    title: 'Foggot password',
 			    views: {
-			        login: {
-			            templateUrl: 'app/views/login.html'
-			        },
 			        content: {
 			            templateUrl: 'app/views/foggotPassword.html'
 			        },
@@ -72,9 +63,6 @@ angular
 	            url: '/contacts',
 	            title: 'Contacts',
 	            views: {
-	                login: {
-	                    templateUrl: 'app/views/login.html'
-	                },
 	                content: {
 	                    templateUrl: 'app/views/contacts.html'
 	                },

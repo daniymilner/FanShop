@@ -1,8 +1,9 @@
 ﻿<div class="user-actions-wrapper" ng-controller="userActionsController as userActions">
     <h1 ng-if="isCreate">Create User</h1>
     <h1 ng-if="!isCreate">Edit User</h1>
-
-    <form class="centered-table-form">
+    
+    <h2 ng-if="hide">No user</h2>
+    <form class="centered-table-form" ng-if="!hide">
         <table>
             <tr>
                 <td>Id</td>
@@ -12,6 +13,12 @@
                 <td>Login</td>
                 <td>
                     <input type="text" name="login" ng-model="user.Login" />
+                </td>
+            </tr>
+            <tr ng-if="isCreate">
+                <td>Password</td>
+                <td>
+                    <input type="password" name="password" ng-model="user.Password" />
                 </td>
             </tr>
             <tr>
@@ -34,7 +41,7 @@
             </tr>
             <tr>
                 <td>Create date</td>
-                <td></td>
+                <td>{{user.CreateDate}}</td>
             </tr>
             <tr>
                 <td>Admin</td>

@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dataAccess.Repository
 {
@@ -38,6 +36,41 @@ namespace dataAccess.Repository
             using (var db = new ShopDataContext())
             {
                 db.Users.InsertOnSubmit(user);
+                db.SubmitChanges();
+            }
+        }
+
+        public List<Users> GetAllUsers()
+        {
+            using (var db = new ShopDataContext())
+            {
+                return db.Users.OrderByDescending(z=>z.CreateDate).ToList();
+            }
+        }
+
+        public void UpdateUser(Users user)
+        {
+            using (var db = new ShopDataContext())
+            {
+                var itemFromDb = db.Users.FirstOrDefault(z => z.Id == user.Id);
+                if (itemFromDb == null) return;
+
+                itemFromDb.Email = user.Email;
+                itemFromDb.IsAdmin = user.IsAdmin;
+                itemFromDb.Login = user.Login;
+                itemFromDb.Name = user.Name;
+                itemFromDb.Surname = user.Surname;
+                db.SubmitChanges();
+            }
+        }
+
+        public void DeleteUserById(Guid id)
+        {
+            using (var db = new ShopDataContext())
+            {
+                var user = db.Users.FirstOrDefault(z => z.Id == id);
+                if (user == null) return;
+                db.Users.DeleteOnSubmit(user);
                 db.SubmitChanges();
             }
         }
