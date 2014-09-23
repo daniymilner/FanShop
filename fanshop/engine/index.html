@@ -7,19 +7,7 @@
 </head>
 <body>
 	<div class="app-wrapper">
-		<nav class="main-menu" ng-controller="menuController as menu">
-			<ul>
-				<li ui-sref='home()'>Home</li>
-				<li ui-sref='category()'>Products</li>
-                <li ui-sref='contacts()'>Contacts</li>
-			</ul>
-			<div class="login-block" ui-view="login" ng-if="!$user"></div>
-			<div class="hello-block" ng-if="$user">
-			    <p class="name">Hello, {{$user.Login}}</p>
-                <p ui-sref="profile()" class="profile">Profile</p>
-			    <a ng-click="Auth.signOut()" class="signout">Sign Out</a>
-			</div>
-		</nav>
+        <div class="navigation" ui-view="menu"></div>
 		<div class="content-wrapper">
 			<div class="content" ui-view="content"></div>
 		</div>

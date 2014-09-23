@@ -206,12 +206,16 @@
     <Content Include="app\styles\import.css" />
     <Content Include="app\styles\products.css" />
     <Content Include="app\styles\registration.css" />
+    <Content Include="app\views\admin\index.html" />
+    <Content Include="app\views\admin\menu.html" />
+    <Content Include="app\views\admin\viewUsers.html" />
     <Content Include="app\views\category.html" />
     <Content Include="app\views\contacts.html" />
     <Content Include="app\views\details.html" />
     <Content Include="app\views\foggotPassword.html" />
     <Content Include="app\views\home.html" />
     <Content Include="app\views\login.html" />
+    <Content Include="app\views\menu.html" />
     <Content Include="app\views\products.html" />
     <Content Include="app\views\profile.html" />
     <Content Include="app\views\registration.html" />
@@ -243,7 +247,9 @@
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="app\js\controllers\admin\" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>

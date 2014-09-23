@@ -1,6 +1,8 @@
-﻿.details-wrapper .detail-block {
+.details-wrapper .detail-block {
     margin-left: 100px;
     position: relative;
+    margin-right: 20px;
+    text-align: justify;
 }
 
     .details-wrapper .detail-block img {

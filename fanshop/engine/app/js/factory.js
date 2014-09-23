@@ -2,10 +2,14 @@ angular.module('shopApp')
 	.factory('Auth', [
 		'$rootScope', '$cookies', '$http', function ($rootScope, $cookies, $http) {
 		    var cookieKey = '__vhe_u_olol';
-		    var isAuth = false;
+		    var isAuth = false,
+		        isAdmin = false;
 		    return {
 		        isAuthenticated: function () {
 		            return isAuth;
+		        },
+		        isAdmin: function () {
+		            return isAdmin;
 		        },
 		        authorize: function (data, callback) {
 		            var login;
@@ -23,6 +27,7 @@ angular.module('shopApp')
 		                    if (status === 200) {
 		                        $rootScope.$user = dataInfo;
 		                        isAuth = true;
+		                        isAdmin = dataInfo.IsAdmin;
 		                        if (callback) {
 		                            callback(null, 200);
 		                        }
@@ -69,6 +74,7 @@ angular.module('shopApp')
                 },
                 signOut: function () {
                     isAuth = false;
+                    isAdmin = false;
 		            delete $cookies[cookieKey];
 		            delete $rootScope.$user;
 		            $rootScope.$state.go('home');

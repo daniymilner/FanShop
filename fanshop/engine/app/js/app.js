@@ -16,6 +16,9 @@ angular
 			        },
 			        content: {
 			            templateUrl: 'app/views/home.html'
+			        },
+			        menu: {
+			            templateUrl: 'app/views/menu.html'
 			        }
 			    },
                 isSecure: false
@@ -29,6 +32,9 @@ angular
 			        },
 			        content: {
 			            templateUrl: 'app/views/registration.html'
+			        },
+			        menu: {
+			            templateUrl: 'app/views/menu.html'
 			        }
 			    },
 			    isSecure: false
@@ -42,6 +48,9 @@ angular
 			        },
 			        content: {
 			            templateUrl: 'app/views/foggotPassword.html'
+			        },
+			        menu: {
+			            templateUrl: 'app/views/menu.html'
 			        }
 			    },
 			    isSecure: false
@@ -52,6 +61,9 @@ angular
 			    views: {
 			        content: {
 			            templateUrl: 'app/views/products.html'
+			        },
+			        menu: {
+			            templateUrl: 'app/views/menu.html'
 			        }
 			    },
 			    isSecure: false
@@ -65,6 +77,9 @@ angular
 	                },
 	                content: {
 	                    templateUrl: 'app/views/contacts.html'
+	                },
+	                menu: {
+	                    templateUrl: 'app/views/menu.html'
 	                }
 	            },
 	            isSecure: false
@@ -75,6 +90,9 @@ angular
 	            views: {
 	                content: {
 	                    templateUrl: 'app/views/profile.html'
+	                },
+	                menu: {
+	                    templateUrl: 'app/views/menu.html'
 	                }
 	            },
 	            isSecure: true
@@ -85,6 +103,9 @@ angular
 	            views: {
 	                content: {
 	                    templateUrl: 'app/views/category.html'
+	                },
+	                menu: {
+	                    templateUrl: 'app/views/menu.html'
 	                }
 	            },
 	            isSecure: true
@@ -95,8 +116,39 @@ angular
 	            views: {
 	                content: {
 	                    templateUrl: 'app/views/details.html'
+	                },
+	                menu: {
+	                    templateUrl: 'app/views/menu.html'
 	                }
 	            },
 	            isSecure: true
+	        })
+	        .state('admin', {
+	            url: '/admin',
+	            title: 'Admin',
+	            views: {
+	                content: {
+	                    templateUrl: 'app/views/admin/index.html'
+	                },
+	                menu: {
+	                    templateUrl: 'app/views/admin/menu.html'
+	                }
+	            },
+	            isSecure: true,
+                isAdmin: true
+	        })
+	        .state('adminUsers', {
+	            url: '/admin/users',
+	            title: 'Admin Users',
+	            views: {
+	                content: {
+	                    templateUrl: 'app/views/admin/viewUsers.html'
+	                },
+	                menu: {
+	                    templateUrl: 'app/views/admin/menu.html'
+	                }
+	            },
+	            isSecure: true,
+	            isAdmin: true
 	        });
 	});

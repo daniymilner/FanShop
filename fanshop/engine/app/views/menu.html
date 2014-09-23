@@ -1,0 +1,15 @@
+﻿<nav class="main-menu" ng-controller="menuController as menu">
+    <ul>
+        <li ui-sref='home()'>Home</li>
+        <li ui-sref='category()'>Products</li>
+        <li ui-sref='contacts()'>Contacts</li>
+        <li ui-sref='admin()'>Admin panel</li>
+        <!-- TODO:  ng-if="$user.IsAdmin" -->
+    </ul>
+    <div class="login-block" ui-view="login" ng-if="!$user"></div>
+    <div class="hello-block" ng-if="$user">
+        <p class="name">Hello, {{$user.Login}}</p>
+        <p ui-sref="profile()" class="profile">Profile</p>
+        <a ng-click="Auth.signOut()" class="signout">Sign Out</a>
+    </div>
+</nav>

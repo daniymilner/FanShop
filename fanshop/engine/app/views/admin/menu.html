@@ -1,0 +1,15 @@
+﻿<nav class="main-menu">
+    <ul>
+        <li ui-sref="adminUsers()">Users</li>
+        <li>Products</li>
+        <li>Categories</li>
+        <li>Orders</li>
+        <li>Feedback</li>
+        <li ui-sref="home()">Go to shop</li>
+    </ul>
+    <div class="hello-block" ng-if="$user">
+        <p class="name">Hello, {{$user.Login}}</p>
+        <p ui-sref="profile()" class="profile">Profile</p>
+        <a ng-click="Auth.signOut()" class="signout">Sign Out</a>
+    </div>
+</nav>
