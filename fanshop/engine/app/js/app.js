@@ -17,7 +17,8 @@ angular
 			        content: {
 			            templateUrl: 'app/views/home.html'
 			        }
-			    }
+			    },
+                isSecure: false
 			})
 			.state('registration', {
 			    url: '/registration',
@@ -29,7 +30,8 @@ angular
 			        content: {
 			            templateUrl: 'app/views/registration.html'
 			        }
-			    }
+			    },
+			    isSecure: false
 			})
 			.state('foggotPassword', {
 			    url: '/foggot',
@@ -41,7 +43,8 @@ angular
 			        content: {
 			            templateUrl: 'app/views/foggotPassword.html'
 			        }
-			    }
+			    },
+			    isSecure: false
 			})
 			.state('products', {
 			    url: '/products/:categoryKey',
@@ -50,7 +53,8 @@ angular
 			        content: {
 			            templateUrl: 'app/views/products.html'
 			        }
-			    }
+			    },
+			    isSecure: false
 			})
 	        .state('contacts', {
 	            url: '/contacts',
@@ -62,7 +66,8 @@ angular
 	                content: {
 	                    templateUrl: 'app/views/contacts.html'
 	                }
-	            }
+	            },
+	            isSecure: false
 	        })
 	        .state('profile', {
 	            url: '/profile',
@@ -71,7 +76,8 @@ angular
 	                content: {
 	                    templateUrl: 'app/views/profile.html'
 	                }
-	            }
+	            },
+	            isSecure: true
 	        })
 	        .state('category', {
 	            url: '/category',
@@ -80,7 +86,8 @@ angular
 	                content: {
 	                    templateUrl: 'app/views/category.html'
 	                }
-	            }
+	            },
+	            isSecure: true
 	        })
 	        .state('details', {
 	            url: '/details/:productKey',
@@ -89,6 +96,7 @@ angular
 	                content: {
 	                    templateUrl: 'app/views/details.html'
 	                }
-	            }
+	            },
+	            isSecure: true
 	        });
 	});
