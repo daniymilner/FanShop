@@ -2,46 +2,53 @@
     <h1 ng-if="isCreate">Create User</h1>
     <h1 ng-if="!isCreate">Edit User</h1>
 
-    <table>
-        <tr>
-            <td>Id</td>
-            <td>{{user.Id}}</td>
-        </tr>
-        <tr>
-            <td>Login</td>
-            <td>
-                <input type="text" name="login" ng-model="user.Login"/>
-            </td>
-        </tr>
-        <tr>
-            <td>Email</td>
-            <td>
-                <input type="email" name="email" ng-model="user.Email"/>
-            </td>
-        </tr>
-        <tr>
-            <td>Name</td>
-            <td>
-                <input type="text" name="name" ng-model="user.Name"/>
-            </td>
-        </tr>
-        <tr>
-            <td>Surname</td>
-            <td>
-                <input type="text" name="surname" ng-model="user.Surname"/>
-            </td>
-        </tr>
-        <tr>
-            <td>Create date</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Admin</td>
-            <td>
-                <input type="checkbox" name="admin" ng-model="user.IsAdmin"/>
-            </td>
-        </tr>
-    </table>
-    <input type="button" name="create" value="Create" ng-if="isCreate" ng-click="create()"/>
-    <input type="button" name="edit" value="Edit" ng-if="!isCreate" ng-click="edit()"/>
+    <form class="centered-table-form">
+        <table>
+            <tr>
+                <td>Id</td>
+                <td>{{user.Id}}</td>
+            </tr>
+            <tr>
+                <td>Login</td>
+                <td>
+                    <input type="text" name="login" ng-model="user.Login" />
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>
+                    <input type="email" name="email" ng-model="user.Email" />
+                </td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input type="text" name="name" ng-model="user.Name" />
+                </td>
+            </tr>
+            <tr>
+                <td>Surname</td>
+                <td>
+                    <input type="text" name="surname" ng-model="user.Surname" />
+                </td>
+            </tr>
+            <tr>
+                <td>Create date</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Admin</td>
+                <td>
+                    <input type="checkbox" name="admin" ng-model="user.IsAdmin" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="button" name="create" value="Create" ng-if="isCreate" ng-click="create()" />
+                    <input type="button" name="edit" value="Edit" ng-if="!isCreate" ng-click="edit()" />
+                </td>
+            </tr>
+        </table>
+    </form>
 </div>

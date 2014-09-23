@@ -2,6 +2,19 @@
     <h1>View Users</h1>
     <input type="button" name="create" value="Create" ng-click="create()"/>
     <table class="fool">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Login</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Create date</th>
+                <th>Admin</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
         <tr ng-repeat="user in usersList">
             <td>{{user.Id}}</td>
             <td>{{user.Login}}</td>
