@@ -1,0 +1,21 @@
+﻿<div class="view-users-wrapper" ng-controller="usersController as users">
+    <h1>View Users</h1>
+    <input type="button" name="create" value="Create" ng-click="create()"/>
+    <table class="fool">
+        <tr ng-repeat="user in usersList">
+            <td>{{user.Id}}</td>
+            <td>{{user.Login}}</td>
+            <td>{{user.Email}}</td>
+            <td>{{user.Name}}</td>
+            <td>{{user.Surname}}</td>
+            <td>{{user.CreateDate}}</td>
+            <td>{{user.IsAdmin}}</td>
+            <td>
+                <a ng-click="edit(user)">Edit</a>
+            </td>
+            <td>
+                <a ng-click="delete(user)">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -142,7 +142,21 @@ angular
 	            title: 'Admin Users',
 	            views: {
 	                content: {
-	                    templateUrl: 'app/views/admin/viewUsers.html'
+	                    templateUrl: 'app/views/admin/users.html'
+	                },
+	                menu: {
+	                    templateUrl: 'app/views/admin/menu.html'
+	                }
+	            },
+	            isSecure: true,
+	            isAdmin: true
+	        })
+	        .state('adminUserActions', {
+	            url: '/admin/users/actions/:userid',
+	            title: 'Admin User Actions',
+	            views: {
+	                content: {
+	                    templateUrl: 'app/views/admin/userActions.html'
 	                },
 	                menu: {
 	                    templateUrl: 'app/views/admin/menu.html'
