@@ -17,7 +17,7 @@ namespace engine.Controllers
         [ActionName("GetAllCategories")]
         public HttpResponseMessage GetAllCategories()
         {
-            return SuccessResult(_category.GetAllCategories());
+            return SuccessResult(_category.All());
         }
 
         [HttpPost]
@@ -27,7 +27,7 @@ namespace engine.Controllers
             Guid identifier;
             if (Guid.TryParse(id, out identifier))
             {
-                _category.DeleteCategoryById(identifier);
+                _category.DeleteItem(z=>z.Id == identifier);
             }
             return SuccessResult();
         }
@@ -36,11 +36,11 @@ namespace engine.Controllers
         [ActionName("CreateCategory")]
         public HttpResponseMessage CreateCategory(Category category)
         {
-            var item = _category.GetCategoryByPublicKey(category.PublicKey);
+            var item = _category.GetFirstOrDefault(z => z.PublicKey == category.PublicKey);
             if (item != null) return ErrorResult("key");
 
             category.Id = Guid.NewGuid();
-            _category.CreateCategory(category);
+            _category.CreateItem(category);
             return SuccessResult();
         }
 
@@ -50,7 +50,7 @@ namespace engine.Controllers
         {
             Guid identifier;
             if (!Guid.TryParse(id, out identifier)) return ErrorResult();
-            var category = _category.GetCategoryById(identifier);
+            var category = _category.GetFirstOrDefault(z => z.Id == identifier);
             return category != null ? SuccessResult(category) : ErrorResult("no category");
         }
 

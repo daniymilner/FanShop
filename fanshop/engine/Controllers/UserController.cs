@@ -1,4 +1,5 @@
-﻿using dataAccess.Constants;
+﻿using System.Linq;
+using dataAccess.Constants;
 using dataAccess.Helpers;
 using dataAccess.Model;
 using dataAccess.Repository;
@@ -17,15 +18,15 @@ namespace engine.Controllers
         [ActionName("Registration")]
         public HttpResponseMessage Registration(Users user)
         {
-            if (_users.GetUserByLogin(user.Login) != null) return ErrorResult(Constants.Login);
-            if (_users.GetUserByEmail(user.Email) != null) return ErrorResult(Constants.Email);
+            if (_users.GetFirstOrDefault(z=>z.Login == user.Login) != null) return ErrorResult(Constants.Login);
+            if (_users.GetFirstOrDefault(z=>z.Email == user.Email) != null) return ErrorResult(Constants.Email);
 
             var passwordHashMd5 = HashHelper.ComputeHash(user.Password, "MD5", Converter.GetBytes(Constants.Salt));
 
             user.Password = passwordHashMd5;
             user.Id = Guid.NewGuid();
             user.CreateDate = DateTime.Now;
-            _users.CreateUser(user);
+            _users.CreateItem(user);
 
             return SuccessResult(user);
 
@@ -42,7 +43,7 @@ namespace engine.Controllers
         [ActionName("GetUserInfo")]
         public HttpResponseMessage GetUserInfo(string login)
         {
-            var user = _users.GetUserByLogin(login);
+            var user = _users.GetFirstOrDefault(z => z.Login == login);
             return user == null ? ErrorResult(Constants.Login) : SuccessResult(user);
         }
 
@@ -53,7 +54,7 @@ namespace engine.Controllers
             if (userData == null || String.IsNullOrEmpty(userData.Login) || String.IsNullOrEmpty(userData.Password))
                 return ErrorResult();
 
-            var user = _users.GetUserByLogin(userData.Login);
+            var user = _users.GetFirstOrDefault(z => z.Login == userData.Login);
             if (user == null)
                 return ErrorResult(Constants.Login);
 
@@ -66,7 +67,7 @@ namespace engine.Controllers
         [ActionName("GetAllUsers")]
         public HttpResponseMessage GetAllUsers()
         {
-            return SuccessResult(_users.GetAllUsers());
+            return SuccessResult(_users.All().OrderByDescending(z=>z.CreateDate));
         }
 
         [HttpPost]
@@ -75,7 +76,7 @@ namespace engine.Controllers
         {
             Guid identifier;
             if (!Guid.TryParse(id, out identifier)) return ErrorResult();
-            var user = _users.GetUserById(identifier);
+            var user = _users.GetFirstOrDefault(z => z.Id == identifier);
             return user != null ? SuccessResult(user) : ErrorResult("no user");
         }
 
@@ -94,7 +95,7 @@ namespace engine.Controllers
             Guid identifier;
             if (Guid.TryParse(id, out identifier))
             {
-                _users.DeleteUserById(identifier);
+                _users.DeleteItem(z=>z.Id == identifier);
             }
             return SuccessResult();
         }
