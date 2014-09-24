@@ -1,0 +1,60 @@
+﻿<div class="admin-product-actions-wrapper" ng-controller="productsActionsController as productsActions">
+    <h1 ng-if="isCreate">Create Product</h1>
+    <h1 ng-if="!isCreate">Edit Product</h1>
+
+    <form class="centered-table-form">
+        <table>
+            <tr>
+                <td>Id</td>
+                <td>{{product.Id}}</td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input type="text" name="title" ng-model="product.Title" />
+                </td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td>
+                    <input type="text" name="price" ng-model="product.Price" />
+                </td>
+            </tr>
+            <tr>
+                <td>Color</td>
+                <td>
+                    <input type="text" name="color" ng-model="product.Color" />
+                </td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>
+                    <input type="text" name="description" ng-model="product.Description" />
+                </td>
+            </tr>
+            <tr>
+                <td>Update date</td>
+                <td>{{product.UpdateDate}}</td>
+            </tr>
+            <tr>
+                <td>Category Id</td>
+                <td>
+                    <input type="text" name="categoryId" ng-model="product.CategoryId" />
+                </td>
+            </tr>
+            <tr>
+                <td>Public key</td>
+                <td>
+                    <input type="text" name="key" ng-model="product.PublicKey" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="button" name="create" value="Create" ng-if="isCreate" ng-click="create()" />
+                    <input type="button" name="edit" value="Edit" ng-if="!isCreate" ng-click="edit()" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

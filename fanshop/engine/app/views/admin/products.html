@@ -1,0 +1,36 @@
+﻿<div class="admin-products-wrapper" ng-controller="viewProductsController as viewProducts">
+    <h1>View Products</h1>
+    <input type="button" name="create" value="Create" ng-click="create()" />
+    <table class="fool">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Color</th>
+                <th>Description</th>
+                <th>Update date</th>
+                <th>Category Id</th>
+                <th>Public key</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr ng-repeat="product in productsList">
+            <td>{{product.Id}}</td>
+            <td>{{product.Title}}</td>
+            <td>{{product.Price}}</td>
+            <td>{{product.Color}}</td>
+            <td>{{product.Description}}</td>
+            <td>{{product.UpdateDate}}</td>
+            <td>{{product.CategoryId}}</td>
+            <td>{{product.PublicKey}}</td>
+            <td>
+                <a ng-click="edit(product)">Edit</a>
+            </td>
+            <td>
+                <a ng-click="delete(product)">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>

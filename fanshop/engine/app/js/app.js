@@ -180,5 +180,33 @@ angular
 	            },
 	            isSecure: true,
 	            isAdmin: true
+	        })
+	        .state('adminProducts', {
+	            url: '/admin/products',
+	            title: 'Admin Products',
+	            views: {
+	                content: {
+	                    templateUrl: 'app/views/admin/products.html'
+	                },
+	                menu: {
+	                    templateUrl: 'app/views/admin/menu.html'
+	                }
+	            },
+	            isSecure: true,
+	            isAdmin: true
+	        })
+	        .state('adminProductsActions', {
+	            url: '/admin/products/actions/:productId',
+	            title: 'Admin Products Actions',
+	            views: {
+	                content: {
+	                    templateUrl: 'app/views/admin/productsActions.html'
+	                },
+	                menu: {
+	                    templateUrl: 'app/views/admin/menu.html'
+	                }
+	            },
+	            isSecure: true,
+	            isAdmin: true
 	        });
 	});
