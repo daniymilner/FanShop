@@ -74,7 +74,7 @@ namespace engine.Controllers
         public HttpResponseMessage GetUserById(string id)
         {
             Guid identifier;
-            if (!Guid.TryParse(id, out identifier)) return SuccessResult();
+            if (!Guid.TryParse(id, out identifier)) return ErrorResult();
             var user = _users.GetUserById(identifier);
             return user != null ? SuccessResult(user) : ErrorResult("no user");
         }

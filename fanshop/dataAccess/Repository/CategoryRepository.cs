@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using dataAccess.Model;
 
 namespace dataAccess.Repository
@@ -25,6 +23,46 @@ namespace dataAccess.Repository
                 if (category == null) return;
                 db.Category.DeleteOnSubmit(category);
                 db.SubmitChanges();
+            }
+        }
+
+        public Category GetCategoryByPublicKey(string key)
+        {
+            using (var db = new ShopDataContext())
+            {
+                return db.Category.FirstOrDefault(z => z.PublicKey == key);
+            }
+        }
+
+        public void CreateCategory(Category category)
+        {
+            using (var db = new ShopDataContext())
+            {
+                db.GetTable<Category>().InsertOnSubmit(category);
+                db.SubmitChanges();
+            }
+        }
+
+        public Category GetCategoryById(Guid id)
+        {
+            using (var db = new ShopDataContext())
+            {
+                return db.Category.FirstOrDefault(z => z.Id == id);
+            }
+        }
+
+        public void UpdateCategory(Category category)
+        {
+            using (var db = new ShopDataContext())
+            {
+                var item = db.Category.FirstOrDefault(z => z.Id == category.Id);
+                if (item != null)
+                {
+                    item.Name = category.Name;
+                    item.PublicKey = category.PublicKey;
+
+                    db.SubmitChanges();
+                }
             }
         }
     }

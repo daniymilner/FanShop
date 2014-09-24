@@ -34,6 +34,12 @@ namespace engine
             routes.MapHttpRoute("GetAllCategories", defaultSchema);
 
             routes.MapHttpRoute("DeleteCategory", defaultSchema + "/{id}");
+
+            routes.MapHttpRoute("CreateCategory", defaultSchema);
+
+            routes.MapHttpRoute("GetCategoryById", defaultSchema + "/{id}");
+
+            routes.MapHttpRoute("UpdateCategory", defaultSchema);
         }
 
         void Application_End(object sender, EventArgs e)

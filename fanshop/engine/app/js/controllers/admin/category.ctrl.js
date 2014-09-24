@@ -26,9 +26,9 @@ angular.module('shopApp').controller('adminCategoryController',
 	    $scope.delete = function (category) {
 	        $http({
 	            method: 'POST',
-	            url: '/api/user/deleteUser/' + category.Id
+	            url: '/api/category/deleteCategory/' + category.Id
 	        }).success(function () {
-	            deleteCategoryFromList(user.Id);
+	            deleteCategoryFromList(category.Id);
 	        });
 	    };
 	}]);
