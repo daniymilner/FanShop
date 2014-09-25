@@ -2,11 +2,11 @@
     <h1>Products</h1>
     <div class="products-block">
         <div class="product-item" ng-repeat="item in viewList">
-            <img ng-src="app/media/images/products/{{item.key}}.jpg" alt="{{item.title}}" />
-            <p class="title">{{item.title}}</p>
-            <p class="price">{{item.price}}</p>
-            <div class="color" ng-style="{background:item.color}"></div>
-            <input type="button" class="view-btn" name="view" value="View details" ng-click="view(item.key)"/>
+            <img ng-src="app/media/images/products/{{item.PublicKey}}.jpg" alt="{{item.Title}}" />
+            <p class="title">{{item.Title}}</p>
+            <p class="price">{{item.Price}}</p>
+            <div class="color" ng-style="{background:item.Color}"></div>
+            <input type="button" class="view-btn" name="view" value="View details" ng-click="view(item.PublicKey)"/>
             <input type="button" class="buy-btn" name="buy" value="Add to basket" />
         </div>
     </div>

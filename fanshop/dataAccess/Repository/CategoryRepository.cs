@@ -20,5 +20,15 @@ namespace dataAccess.Repository
                 }
             }
         }
+
+        public void DeleteCategory(Guid id)
+        {
+            var productRepository = new ProductRepository();
+            var products = productRepository.FindAll(z => z.CategoryId == id);
+            foreach (var product in products)
+                productRepository.DeleteItem(z=>z.Id == product.Id);
+
+            DeleteItem(z=>z.Id == id);
+        }
     }
 }

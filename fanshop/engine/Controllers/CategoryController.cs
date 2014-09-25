@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
 using dataAccess.Model;
 using dataAccess.Repository;
@@ -27,7 +24,7 @@ namespace engine.Controllers
             Guid identifier;
             if (Guid.TryParse(id, out identifier))
             {
-                _category.DeleteItem(z=>z.Id == identifier);
+                _category.DeleteCategory(identifier);
             }
             return SuccessResult();
         }

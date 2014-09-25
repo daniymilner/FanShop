@@ -27,7 +27,7 @@ angular.module('shopApp').controller('viewProductsController',
 	        $scope.productsList.forEach(function (item) {
 	            item.UpdateDate = new Date(parseInt(item.UpdateDate.replace('/Date(', '').replace(')/', ''))).toDateString();
 	            getCategoryInfo(item.CategoryId, function (category) {
-	                item.CategoryName = category.Name;
+	                item.CategoryPublicKey = category.PublicKey;
 	            });
 	        });
 	    });

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
 using dataAccess.Model;
@@ -9,6 +10,7 @@ namespace engine.Controllers
     public class ProductController : DefaultController
     {
         private readonly ProductRepository _product = new ProductRepository();
+        private readonly CategoryRepository _category = new CategoryRepository();
 
         [HttpGet]
         [ActionName("GetAllProducts")]
@@ -58,6 +60,17 @@ namespace engine.Controllers
         {
             _product.UpdateProduct(product);
             return SuccessResult();
+        }
+
+        [HttpPost]
+        [ActionName("GetProductsByCategoryKey")]
+        public HttpResponseMessage GetProductsByCategoryKey(string id)
+        {
+            var allCategories = _category.All();
+            var category = allCategories.FirstOrDefault(z => z.PublicKey == id);
+            if (category == null) return ErrorResult("no category");
+            var products = _product.FindAll(z => z.CategoryId == category.Id);
+            return products.Count != 0 ? SuccessResult(products) : ErrorResult("no products");
         }
     }
 }
