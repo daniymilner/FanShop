@@ -40,6 +40,16 @@ namespace engine
             routes.MapHttpRoute("GetCategoryById", defaultSchema + "/{id}");
 
             routes.MapHttpRoute("UpdateCategory", defaultSchema);
+
+            routes.MapHttpRoute("GetAllProducts", defaultSchema);
+
+            routes.MapHttpRoute("DeleteProduct", defaultSchema + "/{id}");
+
+            routes.MapHttpRoute("GetProductById", defaultSchema + "/{id}");
+
+            routes.MapHttpRoute("CreateProduct", defaultSchema);
+
+            routes.MapHttpRoute("UpdateProduct", defaultSchema);
         }
 
         void Application_End(object sender, EventArgs e)

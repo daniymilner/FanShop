@@ -5,7 +5,7 @@ body {
     color: #74a0fc;
 }
 
-input[type=text], input[type=password], input[type=email] {
+input[type=text], input[type=password], input[type=email], select {
     padding: 4px 7px;
     font-size: 14px;
 }
