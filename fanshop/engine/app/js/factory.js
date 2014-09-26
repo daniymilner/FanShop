@@ -2,8 +2,8 @@ angular.module('shopApp')
 	.factory('Auth', [
 		'$rootScope', '$cookies', '$http', function ($rootScope, $cookies, $http) {
 		    var cookieKey = '__vhe_u_olol';
-		    var isAuth = true,
-		        isAdmin = true;
+		    var isAuth = false,
+		        isAdmin = false;
 		    return {
 		        isAuthenticated: function () {
 		            return isAuth;

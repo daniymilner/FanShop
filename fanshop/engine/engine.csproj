@@ -141,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\js\app.js" />
+    <Content Include="app\js\controllers\admin\adminMenu.ctrl.js" />
     <Content Include="app\js\controllers\admin\category.ctrl.js" />
     <Content Include="app\js\controllers\admin\categoryActions.ctrl.js" />
     <Content Include="app\js\controllers\admin\productsActions.ctrl.js" />
