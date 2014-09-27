@@ -1,11 +1,12 @@
 ﻿<div class="details-wrapper" ng-controller="detailsController as details">
     <h1>Details</h1>
-    <div class="detail-block">
-        <img ng-src="app/media/images/products/{{product.key}}.jpg" alt="{{product.title}}" />
-        <p class="title">{{product.title}}</p>
-        <p class="price"><span>Price:</span> {{product.price}}</p>
-        <p class="color" ng-style="{background:product.color}"></p>
-        <p class="description"><span>Description:</span> {{product.description}}</p>
+    <h2 ng-if="hide">No product</h2>
+    <div class="detail-block" ng-if="!hide">
+        <img ng-src="app/media/images/products/{{product.PublicKey}}.jpg" alt="{{product.Title}}" />
+        <p class="title">{{product.Title}}</p>
+        <p class="price"><span>Price:</span> {{product.Price}}</p>
+        <p class="color" ng-style="{background:product.Color}"></p>
+        <p class="description"><span>Description:</span> {{product.Description}}</p>
         <input type="button" class="buy-btn" name="buy" value="Add to basket" />
     </div>
 </div>

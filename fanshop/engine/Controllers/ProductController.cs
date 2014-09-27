@@ -72,5 +72,13 @@ namespace engine.Controllers
             var products = _product.FindAll(z => z.CategoryId == category.Id);
             return products.Count != 0 ? SuccessResult(products) : ErrorResult("no products");
         }
+
+        [HttpPost]
+        [ActionName("GetProductByPublicKey")]
+        public HttpResponseMessage GetProductByPublicKey(string id)
+        {
+            var product = _product.GetFirstOrDefault(z => z.PublicKey == id);
+            return product != null ? SuccessResult(product) : ErrorResult("no product");
+        }
     }
 }

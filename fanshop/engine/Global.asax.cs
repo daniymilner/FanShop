@@ -49,6 +49,8 @@ namespace engine
 
             routes.MapHttpRoute("GetProductsByCategoryKey", defaultSchema + "/{id}");
 
+            routes.MapHttpRoute("GetProductByPublicKey", defaultSchema + "/{id}");
+
             routes.MapHttpRoute("CreateProduct", defaultSchema);
 
             routes.MapHttpRoute("UpdateProduct", defaultSchema);
