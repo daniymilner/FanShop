@@ -1,7 +1,7 @@
 ﻿"use strict";
 
 angular.module('shopApp').controller('productsController',
-	['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+	['$scope', '$rootScope', '$http', '$timeout', function ($scope, $rootScope, $http, $timeout) {
 	    var build = function () {
 	        $scope.viewList = [];
 	        $scope.currentPage = 1;
@@ -28,6 +28,9 @@ angular.module('shopApp').controller('productsController',
 	    })
 	            .success(function (data) {
 	                $scope.list = data;
+	                $scope.list.forEach(function (item) {
+	                    item.count = 1;
+	                });
 	                build();
 	            })
 	            .error(function (data) {
@@ -42,6 +45,26 @@ angular.module('shopApp').controller('productsController',
 
 	    $scope.view = function (key) {
 	        $rootScope.$state.go('details', { productKey: key });
+	    };
+
+	    $scope.addToBacket = function (toAdd) {
+	        toAdd.disable = true;
+	        $http({
+	            method: "POST",
+	            url: "/api/basket/addProductToBasket",
+	            data: {
+	                user: $rootScope.$user,
+	                product: toAdd
+	            }
+	        })
+	        .success(function () {
+	            toAdd.count = 1;
+	            toAdd.success = true;
+	            toAdd.disable = false;
+	            $timeout(function () {
+	                toAdd.success = false;
+	            }, 2000);
+	        });
 	    };
 
 	    $scope.goto(1);

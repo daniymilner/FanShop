@@ -54,6 +54,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Repository\BasketLineRepository.cs" />
+    <Compile Include="Repository\BasketRepository.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
     <Compile Include="Repository\DefaultRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />

@@ -15,6 +15,14 @@
             padding: 0 10px;
         }
 
-        table.fool tr td:first-child {
-            width: 100px;
-        }
+            table.fool tr td:first-child {
+                width: 100px;
+            }
+
+.admin-products-wrapper img {
+    width: 60px;
+}
+
+.admin-products-wrapper td.images {
+    text-align: center;
+}

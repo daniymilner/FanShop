@@ -5,6 +5,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th></th>
                 <th>Title</th>
                 <th>Price</th>
                 <th>Color</th>
@@ -18,6 +19,9 @@
         </thead>
         <tr ng-repeat="product in productsList">
             <td>{{product.Id}}</td>
+            <td class="images">
+               <img ng-src="app/media/images/products/{{product.PublicKey}}.jpg" alt="{{product.Title}}" />
+            </td>
             <td>{{product.Title}}</td>
             <td>{{product.Price}}</td>
             <td>{{product.Color}}</td>

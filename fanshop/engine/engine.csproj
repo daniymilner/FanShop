@@ -194,12 +194,48 @@
     <Content Include="app\js\lib\spectrum.js" />
     <Content Include="app\js\lib\ui-bootstrap-tpls-0.10.0.min.js" />
     <Content Include="app\js\module.js" />
+    <Content Include="app\media\images\basket-icon.png" />
     <Content Include="app\media\images\categories\ball.jpg" />
     <Content Include="app\media\images\categories\scarves.jpg" />
     <Content Include="app\media\images\categories\shoes.jpg" />
     <Content Include="app\media\images\categories\shirt.jpg" />
     <Content Include="app\media\images\categories\tshirt.jpg" />
     <Content Include="app\media\images\fc_dynamo_kyiv.png" />
+    <Content Include="app\media\images\products\ball_1.jpg" />
+    <Content Include="app\media\images\products\ball_2.jpg" />
+    <Content Include="app\media\images\products\ball_3.jpg" />
+    <Content Include="app\media\images\products\ball_4.jpg" />
+    <Content Include="app\media\images\products\ball_5.jpg" />
+    <Content Include="app\media\images\products\scarves_1.jpg" />
+    <Content Include="app\media\images\products\scarves_2.jpg" />
+    <Content Include="app\media\images\products\scarves_3.jpg" />
+    <Content Include="app\media\images\products\scarves_4.jpg" />
+    <Content Include="app\media\images\products\scarves_5.jpg" />
+    <Content Include="app\media\images\products\scarves_6.jpg" />
+    <Content Include="app\media\images\products\scarves_7.jpg" />
+    <Content Include="app\media\images\products\scarves_8.jpeg" />
+    <Content Include="app\media\images\products\shirt_1.jpg" />
+    <Content Include="app\media\images\products\shirt_2.jpg" />
+    <Content Include="app\media\images\products\shirt_3.jpg" />
+    <Content Include="app\media\images\products\shirt_4.jpg" />
+    <Content Include="app\media\images\products\shirt_5.jpg" />
+    <Content Include="app\media\images\products\shirt_6.jpeg" />
+    <Content Include="app\media\images\products\shirt_7.jpeg" />
+    <Content Include="app\media\images\products\shoes_1.jpg" />
+    <Content Include="app\media\images\products\shoes_2.jpg" />
+    <Content Include="app\media\images\products\shoes_3.jpg" />
+    <Content Include="app\media\images\products\shoes_4.jpg" />
+    <Content Include="app\media\images\products\shoes_5.jpeg" />
+    <Content Include="app\media\images\products\shoes_6.jpg" />
+    <Content Include="app\media\images\products\shoes_7.jpg" />
+    <Content Include="app\media\images\products\shoes_8.jpg" />
+    <Content Include="app\media\images\products\tshirt_1.jpg" />
+    <Content Include="app\media\images\products\tshirt_2.jpg" />
+    <Content Include="app\media\images\products\tshirt_3.jpg" />
+    <Content Include="app\media\images\products\tshirt_4.jpg" />
+    <Content Include="app\media\images\products\tshirt_5.jpg" />
+    <Content Include="app\media\images\products\tshirt_6.jpg" />
+    <Content Include="app\media\images\products\tshirt_7.jpg" />
     <Content Include="app\styles\admin.css" />
     <Content Include="app\styles\category.css" />
     <Content Include="app\styles\common\fonts.css" />
@@ -251,6 +287,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="DefaultController.cs" />
@@ -258,6 +295,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddToBasketData.cs" />
+    <Compile Include="Models\ProductData.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

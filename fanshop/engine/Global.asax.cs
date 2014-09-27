@@ -53,6 +53,8 @@ namespace engine
 
             routes.MapHttpRoute("CreateProduct", defaultSchema);
 
+            routes.MapHttpRoute("AddProductToBasket", defaultSchema);
+
             routes.MapHttpRoute("UpdateProduct", defaultSchema);
         }
 

@@ -5,9 +5,13 @@ body {
     color: #74a0fc;
 }
 
-input[type=text], input[type=password], input[type=email], select {
+input[type=text], input[type=password], input[type=email], select, input[type=number] {
     padding: 4px 7px;
     font-size: 14px;
+}
+
+input[type=number] {
+    width: 40px;
 }
 
 input[type=button] {
@@ -23,7 +27,7 @@ input[type=button] {
 
 a {
     text-decoration: none;
-    cursor:pointer;
+    cursor: pointer;
 }
 
     a:hover {
@@ -117,15 +121,18 @@ ul {
     }
 
     .hello-block .profile,
-    .hello-block .signout {
+    .hello-block .signout,
+    .hello-block .admin-panel {
         font-size: 14px;
         cursor: pointer;
+        display: block;
+        color: #fff;
     }
 
     .hello-block .profile {
         margin-top: 20px;
     }
 
-    .hello-block .profile:hover {
-        text-decoration: underline;
-    }
+        .hello-block .profile:hover {
+            text-decoration: underline;
+        }

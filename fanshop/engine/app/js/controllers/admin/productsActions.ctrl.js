@@ -54,6 +54,7 @@ angular.module('shopApp').controller('productsActionsController',
 	    }
 
 	    $scope.create = function () {
+	        $scope.changeCategory();
 	        $http({
 	            method: "POST",
 	            url: "/api/product/createProduct",

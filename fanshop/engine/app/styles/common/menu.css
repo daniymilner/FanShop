@@ -31,3 +31,13 @@
                 cursor: pointer;
                 color: #74A0FC;
             }
+
+            .main-menu ul li.basket {
+                background: url("../../media/images/basket-icon.png") no-repeat;
+                background-size: contain;
+                width: 60px;
+                height: 60px;
+                position: relative;
+                top: -7px;
+                left: 10px;
+            }
