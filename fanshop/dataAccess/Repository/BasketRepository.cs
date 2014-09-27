@@ -16,7 +16,7 @@ namespace dataAccess.Repository
                 var item = db.Basket.FirstOrDefault(z => z.Id == basket.Id);
                 if (item != null)
                 {
-                    item.DateUpdate = basket.DateUpdate;
+                    item.DateUpdate = DateTime.Now;
                     item.Total = basket.Total;
 
                     db.SubmitChanges();

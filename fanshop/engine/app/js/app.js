@@ -111,6 +111,19 @@ angular
 	            },
 	            isSecure: true
 	        })
+            .state('basket', {
+                url: '/basket',
+                title: 'Basket',
+                views: {
+                    content: {
+                        templateUrl: 'app/views/basket.html'
+                    },
+                    menu: {
+                        templateUrl: 'app/views/menu.html'
+                    }
+                },
+                isSecure: true
+            })
 	        .state('admin', {
 	            url: '/admin',
 	            title: 'Admin',

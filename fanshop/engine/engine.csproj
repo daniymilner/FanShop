@@ -148,6 +148,7 @@
     <Content Include="app\js\controllers\admin\userActions.ctrl.js" />
     <Content Include="app\js\controllers\admin\users.ctrl.js" />
     <Content Include="app\js\controllers\admin\viewProducts.ctrl.js" />
+    <Content Include="app\js\controllers\basket.ctrl.js" />
     <Content Include="app\js\controllers\category.ctrl.js" />
     <Content Include="app\js\controllers\contacts.ctrl.js" />
     <Content Include="app\js\controllers\foggot.ctrl.js" />
@@ -237,6 +238,7 @@
     <Content Include="app\media\images\products\tshirt_6.jpg" />
     <Content Include="app\media\images\products\tshirt_7.jpg" />
     <Content Include="app\styles\admin.css" />
+    <Content Include="app\styles\basket.css" />
     <Content Include="app\styles\category.css" />
     <Content Include="app\styles\common\fonts.css" />
     <Content Include="app\styles\common\general.css" />
@@ -258,6 +260,7 @@
     <Content Include="app\views\admin\productsActions.html" />
     <Content Include="app\views\admin\userActions.html" />
     <Content Include="app\views\admin\users.html" />
+    <Content Include="app\views\basket.html" />
     <Content Include="app\views\category.html" />
     <Content Include="app\views\contacts.html" />
     <Content Include="app\views\details.html" />
@@ -296,8 +299,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AddToBasketData.cs" />
+    <Compile Include="Models\CustomBasketLine.cs" />
     <Compile Include="Models\ProductData.cs" />
     <Compile Include="Models\UserData.cs" />
+    <Compile Include="Models\ViewBasketData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

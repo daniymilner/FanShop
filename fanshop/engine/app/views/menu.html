@@ -3,7 +3,7 @@
         <li ui-sref='home()'>Home</li>
         <li ui-sref='category()'>Products</li>
         <li ui-sref='contacts()'>Contacts</li>
-        <li class="basket"></li>
+        <li class="basket" ui-sref="basket()"></li>
     </ul>
     <div class="login-block" ng-if="!$user">
         <div class="login-wrapper" ng-controller="loginController as login">

@@ -18,44 +18,27 @@ namespace engine
             const string defaultSchema = "api/{controller}/{action}";
 
             routes.MapHttpRoute("Registration", defaultSchema);
-
             routes.MapHttpRoute("UserInfo", defaultSchema);
-
             routes.MapHttpRoute("SignIn", defaultSchema);
-
             routes.MapHttpRoute("GetAllUsers", defaultSchema);
-
             routes.MapHttpRoute("GetUserById", defaultSchema + "/{id}");
-
             routes.MapHttpRoute("UpdateUser", defaultSchema);
-
             routes.MapHttpRoute("DeleteUser", defaultSchema + "/{id}");
-
             routes.MapHttpRoute("GetAllCategories", defaultSchema);
-
             routes.MapHttpRoute("DeleteCategory", defaultSchema + "/{id}");
-
             routes.MapHttpRoute("CreateCategory", defaultSchema);
-
             routes.MapHttpRoute("GetCategoryById", defaultSchema + "/{id}");
-
             routes.MapHttpRoute("UpdateCategory", defaultSchema);
-
             routes.MapHttpRoute("GetAllProducts", defaultSchema);
-
             routes.MapHttpRoute("DeleteProduct", defaultSchema + "/{id}");
-
             routes.MapHttpRoute("GetProductById", defaultSchema + "/{id}");
-
             routes.MapHttpRoute("GetProductsByCategoryKey", defaultSchema + "/{id}");
-
             routes.MapHttpRoute("GetProductByPublicKey", defaultSchema + "/{id}");
-
             routes.MapHttpRoute("CreateProduct", defaultSchema);
-
             routes.MapHttpRoute("AddProductToBasket", defaultSchema);
-
             routes.MapHttpRoute("UpdateProduct", defaultSchema);
+            routes.MapHttpRoute("GetBasket", defaultSchema);
+            routes.MapHttpRoute("RemoveProductFromBasket", defaultSchema);
         }
 
         void Application_End(object sender, EventArgs e)
