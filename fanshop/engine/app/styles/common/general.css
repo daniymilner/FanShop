@@ -3,6 +3,7 @@ body {
     font-weight: 400;
     font-style: normal;
     color: #74a0fc;
+    position: relative;
 }
 
 input[type=text], input[type=password], input[type=email], select, input[type=number] {
@@ -41,6 +42,7 @@ a {
 
 .content-wrapper {
     padding: 10px 30px;
+    overflow: hidden;
 }
 
 h1 {
@@ -136,3 +138,7 @@ ul {
         .hello-block .profile:hover {
             text-decoration: underline;
         }
+
+    .app-wrapper.none {
+        pointer-events: none;
+    }

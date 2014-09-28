@@ -3,6 +3,7 @@
     position: relative;
     margin-right: 20px;
     text-align: justify;
+    height: 400px;
 }
 
     .details-wrapper .detail-block img {
@@ -45,5 +46,19 @@
     .details-wrapper .detail-block .buy-btn {
         position: absolute;
         top: 220px;
-        left: 45px;
+        left: 85px;
+    }
+
+    .details-wrapper .detail-block input[type=number] {
+        position: absolute;
+        top: 220px;
+        left: 20px;
+    }
+
+    .details-wrapper .detail-block .success {
+        position: absolute;
+        top: 260px;
+        left: 0;
+        width: 210px;
+        text-align: center;
     }

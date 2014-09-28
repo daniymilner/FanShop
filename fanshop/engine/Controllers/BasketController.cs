@@ -88,6 +88,41 @@ namespace engine.Controllers
             return SuccessResult();
         }
 
+        [HttpPost]
+        [ActionName("ChangeProductCountInBasket")]
+        public HttpResponseMessage ChangeProductCountInBasket(AddToBasketData data)
+        {
+            var basket = _basketRepository.GetFirstOrDefault(z => z.UserId == data.User.Id && z.DateSuccess == null);
+            if (basket == null) return ErrorResult();
+            var line = _basketLineRepository.GetFirstOrDefault(z => z.BasketId == basket.Id && z.ProductId == data.Product.Id);
+            line.Count = data.Product.Count;
+            _basketLineRepository.UpdateBasketLine(line);
+
+            var allLines = _basketLineRepository.FindAll(z => z.BasketId == basket.Id);
+            basket.Total = 0;
+            foreach (var basketLine in allLines)
+            {
+                var product = _productRepository.GetFirstOrDefault(z => z.Id == basketLine.ProductId);
+                basket.Total += basketLine.Count*product.Price;
+            }
+                
+            _basketRepository.UpdateBasket(basket);
+            var result = new ViewBasketData
+            {
+                Basket = basket,
+                Lines = new List<CustomBasketLine>()
+            };
+            foreach (var basketLine in allLines)
+            {
+                result.Lines.Add(new CustomBasketLine
+                {
+                    Line = basketLine,
+                    Product = _productRepository.GetFirstOrDefault(z => z.Id == basketLine.ProductId)
+                });
+            }
+            return SuccessResult(result);
+        }
+
         [HttpGet]
         [ActionName("GetBasket")]
         public HttpResponseMessage GetBasket(string id)

@@ -1,40 +1,41 @@
 ﻿<!doctype html>
 <html ng-app="shopApp">
 <head>
-	<meta charset="UTF-8">
-	<title>Fan Shop</title>
-	<link rel="stylesheet" href="app/styles/import.css"/>
+    <meta charset="UTF-8">
+    <title>Fan Shop</title>
+    <link rel="stylesheet" href="app/styles/import.css" />
 </head>
-<body>
-	<div class="app-wrapper">
-        <div class="navigation" ui-view="menu"></div>
-		<div class="content-wrapper">
-			<div class="content" ui-view="content"></div>
-		</div>
-	</div>
-	<script src="app/js/lib/angular/angular.min.js"></script>
-	<script src="app/js/lib/angular/angular-ui-router.min.js"></script>
-	<script src="app/js/lib/angular/angular-cookies.min.js"></script>
-	<script src="app/js/module.js"></script>
-	<script src="app/js/factory.js"></script>
-	<script src="app/js/app.js"></script>
-    <script src="app/js/directives.js"></script>
-	<script src="app/js/controllers/menu.ctrl.js"></script>
-	<script src="app/js/controllers/home.ctrl.js"></script>
-    <script src="app/js/controllers/registration.ctrl.js"></script>
-    <script src="app/js/controllers/login.ctrl.js"></script>
-    <script src="app/js/controllers/foggot.ctrl.js"></script>
-    <script src="app/js/controllers/contacts.ctrl.js"></script>
-    <script src="app/js/controllers/category.ctrl.js"></script>
-    <script src="app/js/controllers/products.ctrl.js"></script>
-    <script src="app/js/controllers/details.ctrl.js"></script>
-    <script src="app/js/controllers/basket.ctrl.js"></script>
-    <script src="app/js/controllers/admin/users.ctrl.js"></script>
-    <script src="app/js/controllers/admin/userActions.ctrl.js"></script>
-    <script src="app/js/controllers/admin/category.ctrl.js"></script>
-    <script src="app/js/controllers/admin/categoryActions.ctrl.js"></script>
-    <script src="app/js/controllers/admin/viewProducts.ctrl.js"></script>
-    <script src="app/js/controllers/admin/productsActions.ctrl.js"></script>
-    <script src="app/js/controllers/admin/adminMenu.ctrl.js"></script>
-</body>
+    <body>
+        <div id="loader"></div>
+        <div class="app-wrapper">
+            <div class="navigation" ui-view="menu"></div>
+            <div class="content-wrapper" ng-if="!load">
+                <div class="content" ui-view="content"></div>
+            </div>
+        </div>
+        <script src="app/js/lib/angular/angular.min.js"></script>
+        <script src="app/js/lib/angular/angular-ui-router.min.js"></script>
+        <script src="app/js/lib/angular/angular-cookies.min.js"></script>
+        <script src="app/js/module.js"></script>
+        <script src="app/js/factory.js"></script>
+        <script src="app/js/app.js"></script>
+        <script src="app/js/directives.js"></script>
+        <script src="app/js/controllers/menu.ctrl.js"></script>
+        <script src="app/js/controllers/home.ctrl.js"></script>
+        <script src="app/js/controllers/registration.ctrl.js"></script>
+        <script src="app/js/controllers/login.ctrl.js"></script>
+        <script src="app/js/controllers/foggot.ctrl.js"></script>
+        <script src="app/js/controllers/contacts.ctrl.js"></script>
+        <script src="app/js/controllers/category.ctrl.js"></script>
+        <script src="app/js/controllers/products.ctrl.js"></script>
+        <script src="app/js/controllers/details.ctrl.js"></script>
+        <script src="app/js/controllers/basket.ctrl.js"></script>
+        <script src="app/js/controllers/admin/users.ctrl.js"></script>
+        <script src="app/js/controllers/admin/userActions.ctrl.js"></script>
+        <script src="app/js/controllers/admin/category.ctrl.js"></script>
+        <script src="app/js/controllers/admin/categoryActions.ctrl.js"></script>
+        <script src="app/js/controllers/admin/viewProducts.ctrl.js"></script>
+        <script src="app/js/controllers/admin/productsActions.ctrl.js"></script>
+        <script src="app/js/controllers/admin/adminMenu.ctrl.js"></script>
+    </body>
 </html>

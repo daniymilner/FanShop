@@ -3,8 +3,14 @@
 angular
 	.module('shopApp').config(function ($stateProvider, $urlRouterProvider, $httpProvider, $compileProvider) {
 	    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension|data):/);
-	    //$httpProvider.interceptors.push('shopAppHttp');
 	    $urlRouterProvider.otherwise('/');
+	    $httpProvider.responseInterceptors.push('myHttpInterceptor');
+	    var spinnerFunction = function (data) {
+	        var app = document.getElementsByClassName('app-wrapper')[0];
+	        app.classList.add('none');
+	        return data;
+	    };
+	    $httpProvider.defaults.transformRequest.push(spinnerFunction);
 
 	    $stateProvider
 			.state('home', {

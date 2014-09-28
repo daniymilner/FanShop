@@ -47,8 +47,11 @@ angular.module('shopApp').controller('productsController',
 	        $rootScope.$state.go('details', { productKey: key });
 	    };
 
+	    var timer;
 	    $scope.addToBacket = function (toAdd) {
 	        toAdd.disable = true;
+	        toAdd.success = false;
+	        $timeout.cancel(timer);
 	        $http({
 	            method: "POST",
 	            url: "/api/basket/addProductToBasket",
@@ -61,7 +64,7 @@ angular.module('shopApp').controller('productsController',
 	            toAdd.count = 1;
 	            toAdd.success = true;
 	            toAdd.disable = false;
-	            $timeout(function () {
+	            timer = $timeout(function () {
 	                toAdd.success = false;
 	            }, 2000);
 	        });

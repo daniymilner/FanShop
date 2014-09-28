@@ -31,13 +31,16 @@ angular.module('shopApp')
 		                        if (callback) {
 		                            callback(null, 200);
 		                        }
+		                        $rootScope.load = false;
 		                    }
 		                })
-                        .error(function (dataInfo, status) {
-                            if (callback) {
-                                callback(dataInfo, status);
-                            }
-                        });
+		                    .error(function (dataInfo, status) {
+		                        if (callback) {
+		                            callback(dataInfo, status);
+		                        }
+		                    });
+		            } else {
+		                $rootScope.load = false;
 		            }
 		        },
 		        signUp: function (user, callback) {
@@ -56,13 +59,13 @@ angular.module('shopApp')
                         }
                     });
 		        },
-                signIn: function(userData, callback) {
-                    var that = this;
-                    $http({
-                        method: "POST",
-                        url: "/api/user/signIn",
-                        data: userData
-                    })
+		        signIn: function (userData, callback) {
+		            var that = this;
+		            $http({
+		                method: "POST",
+		                url: "/api/user/signIn",
+		                data: userData
+		            })
                     .success(function (user) {
                         that.authorize(user, callback);
                     })
@@ -71,30 +74,27 @@ angular.module('shopApp')
                             callback(data, status);
                         }
                     });
-                },
-                signOut: function () {
-                    isAuth = false;
-                    isAdmin = false;
+		        },
+		        signOut: function () {
+		            isAuth = false;
+		            isAdmin = false;
 		            delete $cookies[cookieKey];
 		            delete $rootScope.$user;
 		            $rootScope.$state.go('home');
 		        }
 		    };
 		}
-	]);
-//.factory('shopAppHttp', function($q, $rootScope){
-//	return {
-//		responseError: function(response){
-//			if($rootScope.$state.current.isSecure){
-//				if($rootScope.$state.current.name !== 'login'){
-//					$rootScope.Auth.signOut();
-//					$rootScope.$state.go('login');
-//				}
-//				return response;
-//			}else{
-//			}
-//
-//			return $q.reject(response);
-//		}
-//	};
-//});
+	]).factory('myHttpInterceptor', function ($q) {
+	    return function (promise) {
+	        return promise.then(function (response) {
+	            var app = document.getElementsByClassName('app-wrapper')[0];
+	            app.classList.remove('none');
+	            return response;
+
+	        }, function (response) {
+	            var app = document.getElementsByClassName('app-wrapper')[0];
+	            app.classList.remove('none');
+	            return $q.reject(response);
+	        });
+	    };
+	});

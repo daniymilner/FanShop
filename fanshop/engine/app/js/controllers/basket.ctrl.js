@@ -2,12 +2,9 @@
 
 angular.module('shopApp').controller('basketController',
 	['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
-	    $scope.viewList = [];
 	    $scope.total = 0;
-	    $http({
-	        method: 'GET',
-	        url: '/api/basket/getbasket?id=' + $rootScope.$user.Id
-	    }).success(function (data) {
+	    var init = function (data) {
+	        $scope.viewList = [];
 	        $scope.data = data;
 	        $scope.data.Lines.forEach(function (item) {
 	            var product = item.Product;
@@ -15,6 +12,12 @@ angular.module('shopApp').controller('basketController',
 	            $scope.viewList.push(product);
 	        });
 	        $scope.total = $scope.data.Basket.Total;
+	    };
+	    $http({
+	        method: 'GET',
+	        url: '/api/basket/getbasket?id=' + $rootScope.$user.Id
+	    }).success(function (data) {
+	        init(data);
 	    }).error(function(data) {
 	        
 	    });
@@ -40,6 +43,19 @@ angular.module('shopApp').controller('basketController',
 	                    break;
 	                }
 	            }
+	        });
+	    };
+
+	    $scope.changeCount = function(item) {
+	        $http({
+	            method: 'POST',
+	            url: '/api/basket/changeProductCountInBasket',
+	            data: {
+	                product: item,
+	                user: $rootScope.$user
+	            }
+	        }).success(function (data) {
+	            init(data);
 	        });
 	    };
 	}]);

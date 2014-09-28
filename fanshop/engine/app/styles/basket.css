@@ -1,4 +1,4 @@
-﻿.basket-wrapper .product-item {
+.basket-wrapper .product-item {
     display: -webkit-box;
     -webkit-box-align: center;
     margin-bottom: 10px;
@@ -32,12 +32,10 @@
 
     .basket-wrapper .product-item .count {
         margin-left: 30px;
-        width: 50px;
-        text-align: center;
     }
 
     .basket-wrapper .product-item .view-btn {
-        margin-left: 40px;
+        margin-left: 20px;
     }
 
     .basket-wrapper .product-item .buy-btn {
