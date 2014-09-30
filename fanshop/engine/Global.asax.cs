@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Routing;
 using System.Web.Http;
+using System.Web.SessionState;
 
 namespace engine
 {
@@ -40,6 +41,8 @@ namespace engine
             routes.MapHttpRoute("GetBasket", defaultSchema);
             routes.MapHttpRoute("RemoveProductFromBasket", defaultSchema);
             routes.MapHttpRoute("ChangeProductCountInBasket", defaultSchema);
+            routes.MapHttpRoute("PayForBasket", defaultSchema);
+            routes.MapHttpRoute("BasketInfo", defaultSchema);
         }
 
         void Application_End(object sender, EventArgs e)
@@ -53,5 +56,18 @@ namespace engine
             // Код, выполняемый при появлении необработанной ошибки
 
         }
+
+        protected void Application_PostAuthorizeRequest()
+        {
+            if (IsWebApiRequest())
+            {
+                HttpContext.Current.SetSessionStateBehavior(SessionStateBehavior.Required);
+            }
+        }
+        private bool IsWebApiRequest()
+        {
+            return HttpContext.Current.Request.AppRelativeCurrentExecutionFilePath.StartsWith("~/api");
+        }
+
     }
 }

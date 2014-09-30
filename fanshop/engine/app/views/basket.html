@@ -1,15 +1,39 @@
 ﻿<div class="basket-wrapper" ng-controller="basketController as basket">
-    <h1>Basket</h1>
-    <h2>Total price <span>{{total}}</span></h2>
-    <div class="products-block">
-        <div class="product-item" ng-repeat="item in viewList">
-            <img ng-src="app/media/images/products/{{item.PublicKey}}.jpg" alt="{{item.Title}}" />
-            <p class="title">{{item.Title}}</p>
-            <p class="price">{{item.Price}}</p>
-            <div class="color" ng-style="{background:item.Color}"></div>
-            <input type="number" name="count" ng-model="item.Count" class="count" ng-change="changeCount(item)"/>
-            <input type="button" class="view-btn" name="view" value="View details" ng-click="view(item.PublicKey)"/>
-            <input type="button" class="buy-btn" name="remove" value="X" ng-click="remove(item)" />
+    <div class="basket-step" ng-if="step == 1">
+        <h1>Basket</h1>
+        <h2>Total price <span>{{total}}</span></h2>
+        <input type="button" class="order-btn red" name="order" value="Show order" ng-if="viewList.length != 0" ng-click="order()" />
+        <div class="products-block">
+            <div class="product-item" ng-repeat="item in viewList">
+                <img ng-src="app/media/images/products/{{item.PublicKey}}.jpg" alt="{{item.Title}}" />
+                <p class="title">{{item.Title}}</p>
+                <p class="price">{{item.Price}}</p>
+                <div class="color" ng-style="{background:item.Color}"></div>
+                <input type="number" name="count" ng-model="item.Count" class="count" ng-change="changeCount(item)" />
+                <input type="button" class="view-btn" name="view" value="View details" ng-click="view(item.PublicKey)" />
+                <input type="button" class="buy-btn" name="remove" value="X" ng-click="remove(item)" />
+            </div>
         </div>
+    </div>
+    <div class="basket-step" ng-if="step == 2">
+        <h1>Order</h1>
+        <form class="centered-table-form not-right">
+            <table>
+                <tr ng-repeat="item in viewList">
+                    <td>{{item.Title}}</td>
+                    <td>{{item.Price}}</td>
+                    <td>{{item.Count}}</td>
+                    <td>{{item.Price * item.Count}}</td>
+                </tr>
+                <tr>
+                    <td colspan="3">Total</td>
+                    <td>{{total}}</td>
+                </tr>
+            </table>
+            <input type="button" name="pay" value="Pay for your order" class="pay-btn" ng-click="pay()" />
+        </form>
+    </div>
+    <div class="basket-step" ng-if="step == 3">
+        <h1>Thank you for your order</h1>
     </div>
 </div>

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Web;
 using dataAccess.Constants;
 using dataAccess.Helpers;
 using dataAccess.Model;
@@ -28,6 +29,8 @@ namespace engine.Controllers
             user.CreateDate = DateTime.Now;
             _users.CreateItem(user);
 
+            SetCurrentUser(user);
+
             return SuccessResult(user);
 
 
@@ -43,7 +46,10 @@ namespace engine.Controllers
         [ActionName("GetUserInfo")]
         public HttpResponseMessage GetUserInfo(string login)
         {
+            var sessionUser = GetCurrentUser();
+            if (sessionUser != null) return SuccessResult(sessionUser);
             var user = _users.GetFirstOrDefault(z => z.Login == login);
+            SetCurrentUser(user);
             return user == null ? ErrorResult(Constants.Login) : SuccessResult(user);
         }
 
@@ -58,9 +64,13 @@ namespace engine.Controllers
             if (user == null)
                 return ErrorResult(Constants.Login);
 
-            return !HashHelper.VerifyHash(userData.Password, "MD5", user.Password) ?
-                                                    ErrorResult(Constants.Password) :
-                                                    SuccessResult(user);
+            
+            if (!HashHelper.VerifyHash(userData.Password, "MD5", user.Password))
+                return ErrorResult(Constants.Password);
+
+            SetCurrentUser(user);
+
+            return SuccessResult(user);
         }
 
         [HttpGet]

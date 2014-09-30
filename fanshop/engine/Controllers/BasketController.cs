@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Providers.Entities;
 using dataAccess.Model;
 using dataAccess.Repository;
 using engine.Models;
@@ -123,15 +122,10 @@ namespace engine.Controllers
             return SuccessResult(result);
         }
 
-        [HttpGet]
-        [ActionName("GetBasket")]
-        public HttpResponseMessage GetBasket(string id)
+        [HttpPost]
+        [ActionName("BasketInfo")]
+        public HttpResponseMessage BasketInfo(Users user)
         {
-            Guid identifier;
-            if (!Guid.TryParse(id, out identifier)) return ErrorResult();
-            var user = _userRepository.GetFirstOrDefault(z => z.Id == identifier);
-            if (user == null) return ErrorResult("no user");
-
             var basket = _basketRepository.GetFirstOrDefault(z => z.UserId == user.Id && z.DateSuccess == null);
             if (basket == null) return ErrorResult("no basket");
 
@@ -151,6 +145,16 @@ namespace engine.Controllers
             }
             
             return SuccessResult(result);
+        }
+
+        [HttpPost]
+        [ActionName("PayForBasket")]
+        public HttpResponseMessage PayForBasket(Users user)
+        {
+            var basket = _basketRepository.GetFirstOrDefault(z => z.UserId == user.Id && z.DateSuccess == null);
+            if (basket == null) return ErrorResult();
+            _basketRepository.SuccessBasket(basket);
+            return SuccessResult();
         }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using System.Web.Script.Serialization;
+using dataAccess.Model;
 
 namespace engine
 {
@@ -38,6 +40,16 @@ namespace engine
             {
                 Content = new StringContent(result)
             };
+        }
+
+        public Users GetCurrentUser()
+        {
+            return (Users)HttpContext.Current.Session["CurrentUser"];
+        }
+
+        public void SetCurrentUser(Users user)
+        {
+            HttpContext.Current.Session.Add("CurrentUser", user);
         }
     }
 }

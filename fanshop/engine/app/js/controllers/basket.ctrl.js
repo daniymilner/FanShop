@@ -3,6 +3,7 @@
 angular.module('shopApp').controller('basketController',
 	['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
 	    $scope.total = 0;
+	    $scope.viewList = [];
 	    var init = function (data) {
 	        $scope.viewList = [];
 	        $scope.data = data;
@@ -14,12 +15,14 @@ angular.module('shopApp').controller('basketController',
 	        $scope.total = $scope.data.Basket.Total;
 	    };
 	    $http({
-	        method: 'GET',
-	        url: '/api/basket/getbasket?id=' + $rootScope.$user.Id
+	        method: 'POST',
+	        url: '/api/basket/basketinfo',
+	        data: $rootScope.$user
 	    }).success(function (data) {
 	        init(data);
-	    }).error(function(data) {
-	        
+	        $scope.step = 1;
+	    }).error(function() {
+	        $scope.step = 1;
 	    });
 
 	    $scope.view = function (key) {
@@ -56,6 +59,20 @@ angular.module('shopApp').controller('basketController',
 	            }
 	        }).success(function (data) {
 	            init(data);
+	        });
+	    };
+
+	    $scope.order = function() {
+	        $scope.step = 2;
+	    };
+
+	    $scope.pay = function() {
+	        $http({
+	            method: 'POST',
+	            url: '/api/basket/payForBasket',
+	            data: $rootScope.$user
+	        }).success(function () {
+	            $scope.step = 3;
 	        });
 	    };
 	}]);
