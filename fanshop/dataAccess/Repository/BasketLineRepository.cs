@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using dataAccess.Model;
 
 namespace dataAccess.Repository
@@ -20,6 +17,20 @@ namespace dataAccess.Repository
 
                     db.SubmitChanges();
                 }
+            }
+        }
+
+        public void DeleteLines(List<BasketLine> lines)
+        {
+            using (var db = new ShopDataContext())
+            {
+                foreach (var line in lines)
+                {
+                    var element = db.BasketLine.FirstOrDefault(z => z.Id == line.Id);
+                    if (element == null) continue;
+                    db.BasketLine.DeleteOnSubmit(element);
+                }
+                db.SubmitChanges();
             }
         }
     }

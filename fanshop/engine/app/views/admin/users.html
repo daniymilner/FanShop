@@ -21,7 +21,7 @@
             <td>{{user.Email}}</td>
             <td>{{user.Name}}</td>
             <td>{{user.Surname}}</td>
-            <td>{{user.CreateDate}}</td>
+            <td>{{user.CreateDate | asDate}}</td>
             <td>{{user.IsAdmin}}</td>
             <td>
                 <a ng-click="edit(user)">Edit</a>

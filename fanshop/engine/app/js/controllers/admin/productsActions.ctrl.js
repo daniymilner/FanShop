@@ -43,7 +43,6 @@ angular.module('shopApp').controller('productsActionsController',
 	        })
 	            .success(function (data) {
 	                $scope.product = data;
-	                $scope.product.UpdateDate = new Date(parseInt($scope.product.UpdateDate.replace('/Date(', '').replace(')/', ''))).toDateString();
 	                getAllCategories();
 	            })
 	            .error(function (data) {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
 using dataAccess.Model;
@@ -154,6 +155,29 @@ namespace engine.Controllers
             var basket = _basketRepository.GetFirstOrDefault(z => z.UserId == user.Id && z.DateSuccess == null);
             if (basket == null) return ErrorResult();
             _basketRepository.SuccessBasket(basket);
+            return SuccessResult();
+        }
+
+        [HttpGet]
+        [ActionName("GetAllSuccessBaskets")]
+        public HttpResponseMessage GetAllSuccessBaskets()
+        {
+            var baskets = _basketRepository.FindAll(z => z.DateSuccess != null).OrderByDescending(z=>z.DateSuccess).ToList();
+            if (baskets.Count == 0) return ErrorResult("no baskets");
+            var result = baskets.Select(basket => new BasketData
+            {
+                Basket = basket, User = _userRepository.GetFirstOrDefault(z => z.Id == basket.UserId)
+            }).ToList();
+            return SuccessResult(result);
+        }
+
+        [HttpPost]
+        [ActionName("RemoveBasket")]
+        public HttpResponseMessage RemoveBasket(Basket basket)
+        {
+            var lines = _basketLineRepository.FindAll(z => z.BasketId == basket.Id);
+            _basketLineRepository.DeleteLines(lines);
+            _basketRepository.DeleteItem(z=>z.Id == basket.Id);
             return SuccessResult();
         }
     }

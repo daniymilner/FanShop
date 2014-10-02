@@ -1,0 +1,31 @@
+﻿<div class="admin-orders-wrapper" ng-controller="adminOrdersController">
+    <h1>Orders</h1>
+    <table class="fool">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DateCreate</th>
+                <th>DateSuccess</th>
+                <th>Total</th>
+                <th>Email</th>
+                <th>Login</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr ng-repeat="item in list">
+            <td>{{item.Basket.Id}}</td>
+            <td>{{item.Basket.DateCreate | asDate}}</td>
+            <td>{{item.Basket.DateSuccess | asDate}}</td>
+            <td>{{item.Basket.Total}}</td>
+            <td>{{item.User.Email}}</td>
+            <td>{{item.User.Login}}</td>
+            <td>
+                <a ng-click="edit(item)">Edit</a>
+            </td>
+            <td>
+                <a ng-click="delete(item)">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>

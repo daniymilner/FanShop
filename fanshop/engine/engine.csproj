@@ -144,6 +144,7 @@
     <Content Include="app\js\controllers\admin\adminMenu.ctrl.js" />
     <Content Include="app\js\controllers\admin\category.ctrl.js" />
     <Content Include="app\js\controllers\admin\categoryActions.ctrl.js" />
+    <Content Include="app\js\controllers\admin\orderEdit.ctrl.js" />
     <Content Include="app\js\controllers\admin\productsActions.ctrl.js" />
     <Content Include="app\js\controllers\admin\userActions.ctrl.js" />
     <Content Include="app\js\controllers\admin\users.ctrl.js" />
@@ -151,6 +152,7 @@
     <Content Include="app\js\controllers\basket.ctrl.js" />
     <Content Include="app\js\controllers\category.ctrl.js" />
     <Content Include="app\js\controllers\contacts.ctrl.js" />
+    <Content Include="app\js\filter.js" />
     <Content Include="app\js\controllers\foggot.ctrl.js" />
     <Content Include="app\js\controllers\login.ctrl.js" />
     <Content Include="app\js\controllers\menu.ctrl.js" />
@@ -223,6 +225,8 @@
     <Content Include="app\views\admin\categoryActions.html" />
     <Content Include="app\views\admin\index.html" />
     <Content Include="app\views\admin\menu.html" />
+    <Content Include="app\views\admin\orders.html" />
+    <Content Include="app\views\admin\ordersEdit.html" />
     <Content Include="app\views\admin\products.html" />
     <Content Include="app\views\admin\productsActions.html" />
     <Content Include="app\views\admin\userActions.html" />
@@ -247,6 +251,7 @@
     <Content Include="app\media\fonts\PT-Sans-Bold.ttf" />
     <Content Include="app\media\fonts\PT-Sans-Regular.ttf" />
     <Content Include="app\js\controllers\details.ctrl.js" />
+    <Content Include="app\js\controllers\admin\orders.ctrl.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -264,6 +269,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AddToBasketData.cs" />
+    <Compile Include="Models\BasketData.cs" />
     <Compile Include="Models\CustomBasketLine.cs" />
     <Compile Include="Models\ProductData.cs" />
     <Compile Include="Models\UserData.cs" />

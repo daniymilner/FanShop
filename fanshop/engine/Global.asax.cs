@@ -43,6 +43,8 @@ namespace engine
             routes.MapHttpRoute("ChangeProductCountInBasket", defaultSchema);
             routes.MapHttpRoute("PayForBasket", defaultSchema);
             routes.MapHttpRoute("BasketInfo", defaultSchema);
+            routes.MapHttpRoute("GetAllSuccessBaskets", defaultSchema);
+            routes.MapHttpRoute("RemoveBasket", defaultSchema);
         }
 
         void Application_End(object sender, EventArgs e)

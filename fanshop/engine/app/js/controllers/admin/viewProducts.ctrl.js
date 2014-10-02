@@ -25,7 +25,6 @@ angular.module('shopApp').controller('viewProductsController',
 	    }).success(function (data) {
 	        $scope.productsList = data;
 	        $scope.productsList.forEach(function (item) {
-	            item.UpdateDate = new Date(parseInt(item.UpdateDate.replace('/Date(', '').replace(')/', ''))).toDateString();
 	            getCategoryInfo(item.CategoryId, function (category) {
 	                item.CategoryPublicKey = category.PublicKey;
 	            });

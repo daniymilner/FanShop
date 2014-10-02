@@ -15,9 +15,6 @@ angular.module('shopApp').controller('usersController',
 	        url: '/api/user/getallusers'
 	    }).success(function (data) {
 	        $scope.usersList = data;
-	        $scope.usersList.forEach(function (item) {
-	            item.CreateDate = new Date(parseInt(item.CreateDate.replace('/Date(', '').replace(')/', ''))).toDateString();
-	        });
 	    });
 
 	    $scope.create = function () {

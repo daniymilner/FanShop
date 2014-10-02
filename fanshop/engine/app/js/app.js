@@ -227,5 +227,33 @@ angular
 	            },
 	            isSecure: true,
 	            isAdmin: true
+	        })
+	        .state('adminOrders', {
+	            url: '/admin/orders',
+	            title: 'Admin Orders',
+	            views: {
+	                content: {
+	                    templateUrl: 'app/views/admin/orders.html'
+	                },
+	                menu: {
+	                    templateUrl: 'app/views/admin/menu.html'
+	                }
+	            },
+	            isSecure: true,
+	            isAdmin: true
+	        })
+	        .state('adminOrdersEdit', {
+	            url: '/admin/orders/edit/:basketId',
+	            title: 'Admin Orders Edit',
+	            views: {
+	                content: {
+	                    templateUrl: 'app/views/admin/ordersEdit.html'
+	                },
+	                menu: {
+	                    templateUrl: 'app/views/admin/menu.html'
+	                }
+	            },
+	            isSecure: true,
+	            isAdmin: true
 	        });
 	});

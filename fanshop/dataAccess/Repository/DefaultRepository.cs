@@ -51,5 +51,14 @@ namespace dataAccess.Repository
             }
         }
 
+        public void DeleteItems(List<T> items)
+        {
+            using (var db = new ShopDataContext())
+            {
+                db.GetTable<T>().DeleteAllOnSubmit(items);
+                db.SubmitChanges();
+            }
+        }
+
     }
 }

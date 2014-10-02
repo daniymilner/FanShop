@@ -24,7 +24,6 @@ angular.module('shopApp').controller('userActionsController',
 	        })
 	            .success(function (data) {
 	                $scope.user = data;
-	                $scope.user.CreateDate = new Date(parseInt($scope.user.CreateDate.replace('/Date(', '').replace(')/', ''))).toDateString();
 	            })
 	            .error(function (data) {
 	                if (data == 'no user') {
