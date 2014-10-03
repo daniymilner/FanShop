@@ -58,6 +58,62 @@ namespace engine.Controllers
             }
         }
 
+        private ViewBasketData GetViewBasketData(Basket basket, List<BasketLine> lines)
+        {
+            var result = new ViewBasketData
+            {
+                Basket = basket,
+                Lines = new List<CustomBasketLine>()
+            };
+            foreach (var basketLine in lines)
+            {
+                result.Lines.Add(new CustomBasketLine
+                {
+                    Line = basketLine,
+                    Product = _productRepository.GetFirstOrDefault(z => z.Id == basketLine.ProductId)
+                });
+            }
+            return result;
+        }
+
+        private ViewBasketData GetBasketInfoById(Guid id)
+        {
+            var basket = _basketRepository.GetFirstOrDefault(z => z.Id == id);
+            if (basket == null) return null;
+
+            var lines = _basketLineRepository.FindAll(z => z.BasketId == basket.Id);
+            return GetViewBasketData(basket, lines);
+        }
+
+        private List<BasketLine> ChangeProductCountAndSave(Basket basket, Guid productId, int count)
+        {
+            var line = _basketLineRepository.GetFirstOrDefault(z => z.BasketId == basket.Id && z.ProductId == productId);
+            line.Count = count;
+            _basketLineRepository.UpdateBasketLine(line);
+
+            var allLines = _basketLineRepository.FindAll(z => z.BasketId == basket.Id);
+            basket.Total = 0;
+            foreach (var basketLine in allLines)
+            {
+                var product = _productRepository.GetFirstOrDefault(z => z.Id == basketLine.ProductId);
+                basket.Total += basketLine.Count * product.Price;
+            }
+            _basketRepository.UpdateBasket(basket);
+            return allLines;
+        }
+
+        private void RemoveProductFromBasketByProductId(Basket basket, Guid productId, decimal productPrice)
+        {
+            var line = _basketLineRepository.GetFirstOrDefault(z => z.BasketId == basket.Id && z.ProductId == productId);
+            _basketLineRepository.DeleteItem(z => z.Id == line.Id);
+            basket.Total = basket.Total - line.Count * productPrice;
+            _basketRepository.UpdateBasket(basket);
+
+            var allLines = _basketLineRepository.FindAll(z => z.BasketId == basket.Id);
+            if (allLines.Count == 0)
+                _basketRepository.DeleteItem(z => z.Id == basket.Id);
+        }
+
         [HttpPost]
         [ActionName("AddProductToBasket")]
         public HttpResponseMessage AddProductToBasket(AddToBasketData data)
@@ -76,15 +132,17 @@ namespace engine.Controllers
         {
             var basket = _basketRepository.GetFirstOrDefault(z => z.UserId == data.User.Id && z.DateSuccess == null);
             if (basket == null) return ErrorResult();
-            var line = _basketLineRepository.GetFirstOrDefault(z => z.BasketId == basket.Id && z.ProductId == data.Product.Id);
-            _basketLineRepository.DeleteItem(z => z.Id == line.Id);
-            basket.Total = basket.Total - line.Count*data.Product.Price;
-            _basketRepository.UpdateBasket(basket);
+            RemoveProductFromBasketByProductId(basket, data.Product.Id, data.Product.Price);
+            return SuccessResult();
+        }
 
-            var allLines = _basketLineRepository.FindAll(z => z.BasketId == basket.Id);
-            if (allLines.Count == 0)
-                _basketRepository.DeleteItem(z => z.Id == basket.Id);
-
+        [HttpPost]
+        [ActionName("RemoveProductFromBasketById")]
+        public HttpResponseMessage RemoveProductFromBasketById(ChangeProductCountData data)
+        {
+            var basket = _basketRepository.GetFirstOrDefault(z => z.Id == data.BasketId);
+            if (basket == null) return ErrorResult();
+            RemoveProductFromBasketByProductId(basket, data.Product.Id, data.Product.Price);
             return SuccessResult();
         }
 
@@ -94,33 +152,18 @@ namespace engine.Controllers
         {
             var basket = _basketRepository.GetFirstOrDefault(z => z.UserId == data.User.Id && z.DateSuccess == null);
             if (basket == null) return ErrorResult();
-            var line = _basketLineRepository.GetFirstOrDefault(z => z.BasketId == basket.Id && z.ProductId == data.Product.Id);
-            line.Count = data.Product.Count;
-            _basketLineRepository.UpdateBasketLine(line);
+            var allLines = ChangeProductCountAndSave(basket, data.Product.Id, data.Product.Count);
+            return SuccessResult(GetViewBasketData(basket, allLines));
+        }
 
-            var allLines = _basketLineRepository.FindAll(z => z.BasketId == basket.Id);
-            basket.Total = 0;
-            foreach (var basketLine in allLines)
-            {
-                var product = _productRepository.GetFirstOrDefault(z => z.Id == basketLine.ProductId);
-                basket.Total += basketLine.Count*product.Price;
-            }
-                
-            _basketRepository.UpdateBasket(basket);
-            var result = new ViewBasketData
-            {
-                Basket = basket,
-                Lines = new List<CustomBasketLine>()
-            };
-            foreach (var basketLine in allLines)
-            {
-                result.Lines.Add(new CustomBasketLine
-                {
-                    Line = basketLine,
-                    Product = _productRepository.GetFirstOrDefault(z => z.Id == basketLine.ProductId)
-                });
-            }
-            return SuccessResult(result);
+        [HttpPost]
+        [ActionName("ChangeProductCountInBasketById")]
+        public HttpResponseMessage ChangeProductCountInBasketById(ChangeProductCountData data)
+        {
+            var basket = _basketRepository.GetFirstOrDefault(z => z.Id == data.BasketId);
+            if (basket == null) return ErrorResult();
+            var allLines = ChangeProductCountAndSave(basket, data.Product.Id, data.Product.Count);
+            return SuccessResult(GetViewBasketData(basket, allLines));
         }
 
         [HttpPost]
@@ -129,23 +172,7 @@ namespace engine.Controllers
         {
             var basket = _basketRepository.GetFirstOrDefault(z => z.UserId == user.Id && z.DateSuccess == null);
             if (basket == null) return ErrorResult("no basket");
-
-            var lines = _basketLineRepository.FindAll(z => z.BasketId == basket.Id);
-            var result = new ViewBasketData
-            {
-                Basket = basket,
-                Lines = new List<CustomBasketLine>()
-            };
-            foreach (var basketLine in lines)
-            {
-                result.Lines.Add(new CustomBasketLine
-                {
-                    Line = basketLine,
-                    Product = _productRepository.GetFirstOrDefault(z => z.Id == basketLine.ProductId)
-                });
-            }
-            
-            return SuccessResult(result);
+            return SuccessResult(GetBasketInfoById(basket.Id));
         }
 
         [HttpPost]
@@ -179,6 +206,17 @@ namespace engine.Controllers
             _basketLineRepository.DeleteLines(lines);
             _basketRepository.DeleteItem(z=>z.Id == basket.Id);
             return SuccessResult();
+        }
+
+        [HttpGet]
+        [ActionName("GetBasketInfoById")]
+        public HttpResponseMessage GetBasketInfoById(string id)
+        {
+            Guid identifier;
+            if (!Guid.TryParse(id, out identifier)) return ErrorResult();
+            var result = GetBasketInfoById(identifier);
+            if (result == null) return ErrorResult("no basket");
+            return SuccessResult(result);
         }
     }
 }

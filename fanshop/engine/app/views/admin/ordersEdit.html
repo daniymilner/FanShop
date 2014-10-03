@@ -1,3 +1,15 @@
-﻿<div class="admin-orders-edit-wrapper" ng-controller="adminOrdersEditController">
+﻿<div class="admin-orders-edit-wrapper basket-wrapper" ng-controller="adminOrdersEditController">
     <h1>Edit order</h1>
+    <h2>Total price <span>{{total}}</span></h2>
+    <div class="products-block">
+        <div class="product-item" ng-repeat="item in viewList">
+            <img ng-src="app/media/images/products/{{item.PublicKey}}.jpg" alt="{{item.Title}}" />
+            <p class="title">{{item.Title}}</p>
+            <p class="price">{{item.Price}}</p>
+            <div class="color" ng-style="{background:item.Color}"></div>
+            <input type="number" name="count" ng-model="item.Count" class="count" ng-change="changeCount(item)" />
+            <input type="button" class="view-btn" name="view" value="View details" ng-click="view(item.PublicKey)" />
+            <input type="button" class="buy-btn" name="remove" value="X" ng-click="remove(item)" />
+        </div>
+    </div>
 </div>

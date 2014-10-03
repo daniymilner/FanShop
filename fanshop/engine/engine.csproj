@@ -270,6 +270,7 @@
     </Compile>
     <Compile Include="Models\AddToBasketData.cs" />
     <Compile Include="Models\BasketData.cs" />
+    <Compile Include="Models\ChangeProductCountData.cs" />
     <Compile Include="Models\CustomBasketLine.cs" />
     <Compile Include="Models\ProductData.cs" />
     <Compile Include="Models\UserData.cs" />

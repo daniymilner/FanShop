@@ -38,13 +38,16 @@ namespace engine
             routes.MapHttpRoute("CreateProduct", defaultSchema);
             routes.MapHttpRoute("AddProductToBasket", defaultSchema);
             routes.MapHttpRoute("UpdateProduct", defaultSchema);
-            routes.MapHttpRoute("GetBasket", defaultSchema);
             routes.MapHttpRoute("RemoveProductFromBasket", defaultSchema);
+            routes.MapHttpRoute("RemoveProductFromBasketById", defaultSchema);
             routes.MapHttpRoute("ChangeProductCountInBasket", defaultSchema);
+            routes.MapHttpRoute("ChangeProductCountInBasketById", defaultSchema);
             routes.MapHttpRoute("PayForBasket", defaultSchema);
             routes.MapHttpRoute("BasketInfo", defaultSchema);
             routes.MapHttpRoute("GetAllSuccessBaskets", defaultSchema);
             routes.MapHttpRoute("RemoveBasket", defaultSchema);
+            routes.MapHttpRoute("GetBasketInfoById", defaultSchema+"/{id}");
+            
         }
 
         void Application_End(object sender, EventArgs e)
