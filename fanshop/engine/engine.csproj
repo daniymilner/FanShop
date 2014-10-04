@@ -260,6 +260,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\AuthenticationProvider.cs" />
     <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ProductController.cs" />

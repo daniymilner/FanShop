@@ -5,6 +5,7 @@ using dataAccess.Model;
 using dataAccess.Repository;
 using System;
 using System.Net.Http;
+using engine.Components;
 using engine.Models;
 using System.Web.Http;
 
@@ -14,6 +15,7 @@ namespace engine.Controllers
     {
         private readonly UserRepository _users = new UserRepository();
         private readonly FeedbackRepository _feedback = new FeedbackRepository();
+        private readonly AuthenticationProvider _authenticationProvider = new AuthenticationProvider();
 
         [HttpPost]
         [ActionName("Registration")]
@@ -30,6 +32,7 @@ namespace engine.Controllers
             _users.CreateItem(user);
 
             SetCurrentUser(user);
+            _authenticationProvider.SignIn(user.Login, true);
 
             return SuccessResult(user);
 
@@ -69,8 +72,17 @@ namespace engine.Controllers
                 return ErrorResult(Constants.Password);
 
             SetCurrentUser(user);
-
+            _authenticationProvider.SignIn(user.Login, true);
             return SuccessResult(user);
+        }
+
+        [HttpPost]
+        [ActionName("SignOut")]
+        public HttpResponseMessage SignOut()
+        {
+            _authenticationProvider.SignOut();
+            CleatCurrentUser();
+            return SuccessResult();
         }
 
         [HttpGet]

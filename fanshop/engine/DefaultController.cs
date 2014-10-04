@@ -51,5 +51,10 @@ namespace engine
         {
             HttpContext.Current.Session.Add("CurrentUser", user);
         }
+
+        public void CleatCurrentUser()
+        {
+            HttpContext.Current.Session.Remove("CurrentUser");
+        }
     }
 }

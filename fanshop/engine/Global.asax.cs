@@ -48,6 +48,7 @@ namespace engine
             routes.MapHttpRoute("RemoveBasket", defaultSchema);
             routes.MapHttpRoute("GetBasketInfoById", defaultSchema+"/{id}");
             routes.MapHttpRoute("SendFeedback", defaultSchema);
+            routes.MapHttpRoute("SignOut", defaultSchema);
 
         }
 

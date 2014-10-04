@@ -76,11 +76,17 @@ angular.module('shopApp')
                     });
 		        },
 		        signOut: function () {
-		            isAuth = false;
-		            isAdmin = false;
-		            delete $cookies[cookieKey];
-		            delete $rootScope.$user;
-		            $rootScope.$state.go('home');
+		            $http({
+		                    method: "POST",
+		                    url: "/api/user/signOut"
+		                })
+		                .success(function() {
+		                    isAuth = false;
+		                    isAdmin = false;
+		                    delete $cookies[cookieKey];
+		                    delete $rootScope.$user;
+		                    $rootScope.$state.go('home');
+		                });
 		        }
 		    };
 		}
