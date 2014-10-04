@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System.Web;
 using dataAccess.Constants;
 using dataAccess.Helpers;
 using dataAccess.Model;
@@ -14,6 +13,7 @@ namespace engine.Controllers
     public class UserController : DefaultController
     {
         private readonly UserRepository _users = new UserRepository();
+        private readonly FeedbackRepository _feedback = new FeedbackRepository();
 
         [HttpPost]
         [ActionName("Registration")]
@@ -107,6 +107,17 @@ namespace engine.Controllers
             {
                 _users.DeleteItem(z=>z.Id == identifier);
             }
+            return SuccessResult();
+        }
+
+        [HttpPost]
+        [ActionName("SendFeedback")]
+        public HttpResponseMessage SendFeedback(Feedback feedback)
+        {
+            feedback.Id = Guid.NewGuid();
+            feedback.Date = DateTime.Now;
+            _feedback.CreateItem(feedback);
+            
             return SuccessResult();
         }
     }

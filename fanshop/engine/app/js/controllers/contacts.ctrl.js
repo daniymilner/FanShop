@@ -1,13 +1,19 @@
 ﻿"use strict";
 
 angular.module('shopApp').controller('contactsController',
-	['$scope', '$rootScope', function ($scope, $rootScope) {
+	['$scope', '$http', function ($scope, $http) {
 	    $scope.data = {
 	        name: '',
 	        email: '',
 	        message: ''
 	    };
 	    $scope.submit = function () {
-	        console.log($scope.data);
+	        $http({
+	            method: 'POST',
+	            url: '/api/user/sendFeedback',
+                data: $scope.data
+	        }).success(function() {
+	            $scope.success = true;
+	        });
 	    };
 	}]);

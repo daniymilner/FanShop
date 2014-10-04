@@ -1,7 +1,8 @@
 ﻿<div class="contacts-wrapper" ng-controller="contactsController as contacts">
     <h1>Contacts</h1>
-    <h2>Send you feedback</h2>
-    <form class="centered-table-form" name="contactsForm">
+    <h2 ng-if="!success">Send you feedback</h2>
+    <h2 ng-if="success">Thank you for your feedback</h2>
+    <form ng-if="!success" class="centered-table-form" name="contactsForm">
         <table>
             <tr>
                 <td>Name</td>
