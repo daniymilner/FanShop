@@ -7,23 +7,25 @@ angular.module('shopApp').controller('loginController',
 	        password: ''
 	    };
 	    $scope.signIn = function () {
-	        $rootScope.Auth.signIn($scope.user, function (data, status) {
-	            if (!data && status == 200) {
-	                $rootScope.$state.go('home');
-	            }
-	            else {
-	                if (status == 412) {
-	                    console.log(data);
-	                    switch (data) {
-	                        case 'login':
-	                            break;
-	                        case 'password':
-	                            break;
-	                        default:
-	                            break;
+	        if ($scope.user.login.trim() != '' && $scope.user.password.trim() != '') {
+	            $rootScope.Auth.signIn($scope.user, function (data, status) {
+	                if (!data && status == 200) {
+	                    $rootScope.$state.go('home');
+	                }
+	                else {
+	                    if (status == 412) {
+	                        console.log(data);
+	                        switch (data) {
+	                            case 'login':
+	                                break;
+	                            case 'password':
+	                                break;
+	                            default:
+	                                break;
+	                        }
 	                    }
 	                }
-	            }
-	        });
+	            });
+	        }
 	    };
 	}]);

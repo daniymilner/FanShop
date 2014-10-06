@@ -10,7 +10,7 @@ angular.module('shopApp').controller('contactsController',
 	    $scope.submit = function () {
 	        $http({
 	            method: 'POST',
-	            url: '/api/user/sendFeedback',
+	            url: '/api/feedback/sendFeedback',
                 data: $scope.data
 	        }).success(function() {
 	            $scope.success = true;

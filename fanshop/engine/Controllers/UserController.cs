@@ -121,16 +121,5 @@ namespace engine.Controllers
             }
             return SuccessResult();
         }
-
-        [HttpPost]
-        [ActionName("SendFeedback")]
-        public HttpResponseMessage SendFeedback(Feedback feedback)
-        {
-            feedback.Id = Guid.NewGuid();
-            feedback.Date = DateTime.Now;
-            _feedback.CreateItem(feedback);
-            
-            return SuccessResult();
-        }
     }
 }

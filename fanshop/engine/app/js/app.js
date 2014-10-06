@@ -255,5 +255,19 @@ angular
 	            },
 	            isSecure: true,
 	            isAdmin: true
+	        })
+	        .state('adminFeedback', {
+	            url: '/admin/feedback',
+	            title: 'Admin Feedback',
+	            views: {
+	                content: {
+	                    templateUrl: 'app/views/admin/feedback.html'
+	                },
+	                menu: {
+	                    templateUrl: 'app/views/admin/menu.html'
+	                }
+	            },
+	            isSecure: true,
+	            isAdmin: true
 	        });
 	});

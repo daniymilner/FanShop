@@ -144,6 +144,7 @@
     <Content Include="app\js\controllers\admin\adminMenu.ctrl.js" />
     <Content Include="app\js\controllers\admin\category.ctrl.js" />
     <Content Include="app\js\controllers\admin\categoryActions.ctrl.js" />
+    <Content Include="app\js\controllers\admin\feedback.ctrl.js" />
     <Content Include="app\js\controllers\admin\orderEdit.ctrl.js" />
     <Content Include="app\js\controllers\admin\productsActions.ctrl.js" />
     <Content Include="app\js\controllers\admin\userActions.ctrl.js" />
@@ -223,6 +224,7 @@
     <Content Include="app\styles\registration.css" />
     <Content Include="app\views\admin\category.html" />
     <Content Include="app\views\admin\categoryActions.html" />
+    <Content Include="app\views\admin\feedback.html" />
     <Content Include="app\views\admin\index.html" />
     <Content Include="app\views\admin\menu.html" />
     <Content Include="app\views\admin\orders.html" />
@@ -263,6 +265,7 @@
     <Compile Include="Components\AuthenticationProvider.cs" />
     <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="DefaultController.cs" />
     <Compile Include="Controllers\UserController.cs" />

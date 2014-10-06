@@ -1,0 +1,25 @@
+﻿<div class="admin-feedback-wrapper" ng-controller="adminFeedbackController">
+    <h1>Feedback list</h1>
+    <table class="fool">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Date</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr ng-repeat="item in list">
+            <td>{{item.Id}}</td>
+            <td>{{item.Name}}</td>
+            <td>{{item.Email}}</td>
+            <td>{{item.Message}}</td>
+            <td>{{item.Date | asDate}}</td>
+            <td>
+                <a ng-click="delete(item)">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>
