@@ -153,6 +153,8 @@
     <Content Include="app\js\controllers\basket.ctrl.js" />
     <Content Include="app\js\controllers\category.ctrl.js" />
     <Content Include="app\js\controllers\contacts.ctrl.js" />
+    <Content Include="app\js\controllers\history.ctrl.js" />
+    <Content Include="app\js\controllers\historyDetails.ctrl.js" />
     <Content Include="app\js\filter.js" />
     <Content Include="app\js\controllers\foggot.ctrl.js" />
     <Content Include="app\js\controllers\login.ctrl.js" />
@@ -238,8 +240,10 @@
     <Content Include="app\views\contacts.html" />
     <Content Include="app\views\details.html" />
     <Content Include="app\views\foggotPassword.html" />
+    <Content Include="app\views\history.html" />
     <Content Include="app\views\home.html" />
     <Content Include="app\views\menu.html" />
+    <Content Include="app\views\historyDetails.html" />
     <Content Include="app\views\products.html" />
     <Content Include="app\views\profile.html" />
     <Content Include="app\views\registration.html" />

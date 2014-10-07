@@ -24,7 +24,7 @@ angular
 			            templateUrl: 'app/views/menu.html'
 			        }
 			    },
-                isSecure: false
+			    isSecure: false
 			})
 			.state('registration', {
 			    url: '/registration',
@@ -130,6 +130,32 @@ angular
                 },
                 isSecure: true
             })
+            .state('history', {
+                url: '/history',
+                title: 'History',
+                views: {
+                    content: {
+                        templateUrl: 'app/views/history.html'
+                    },
+                    menu: {
+                        templateUrl: 'app/views/menu.html'
+                    }
+                },
+                isSecure: true
+            })
+            .state('historyDetails', {
+                url: '/history/details/:id',
+                title: 'History Details',
+                views: {
+                    content: {
+                        templateUrl: 'app/views/historyDetails.html'
+                    },
+                    menu: {
+                        templateUrl: 'app/views/menu.html'
+                    }
+                },
+                isSecure: true
+            })
 	        .state('admin', {
 	            url: '/admin',
 	            title: 'Admin',
@@ -142,7 +168,7 @@ angular
 	                }
 	            },
 	            isSecure: true,
-                isAdmin: true
+	            isAdmin: true
 	        })
 	        .state('adminUsers', {
 	            url: '/admin/users',

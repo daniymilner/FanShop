@@ -1,0 +1,24 @@
+﻿<div class="history-wrapper" ng-controller="historyController">
+    <h1>History</h1>
+    <table class="fool">
+        <thead>
+            <tr>
+                <th>DateCreate</th>
+                <th>DateSuccess</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr ng-repeat="item in viewList">
+            <td>{{item.DateCreate | asDate}}</td>
+            <td>{{item.DateSuccess | asDate}}</td>
+            <td>{{item.Total}}</td>
+            <td>
+                <a ng-click="view(item.PublicId)">View</a>
+            </td>
+        </tr>
+    </table>
+    <ul class="paginator">
+        <li ng-repeat="page in pages" ng-click="goto(page)" ng-class="{active:page == currentPage}">{{page}}</li>
+    </ul>
+</div>

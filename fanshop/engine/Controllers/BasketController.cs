@@ -218,5 +218,23 @@ namespace engine.Controllers
             if (result == null) return ErrorResult("no basket");
             return SuccessResult(result);
         }
+
+        [HttpPost]
+        [ActionName("OrderHistory")]
+        public HttpResponseMessage OrderHistory()
+        {
+            var sessionUser = GetCurrentUser();
+            var list = _basketRepository.FindAll(z => z.UserId == sessionUser.Id && z.DateSuccess != null).OrderByDescending(z=>z.DateSuccess).ToList();
+            return SuccessResult(list);
+        }
+
+        [HttpPost]
+        [ActionName("BasketInfoByPublicId")]
+        public HttpResponseMessage BasketInfoByPublicId(string id)
+        {
+            var basket = _basketRepository.GetFirstOrDefault(z => z.PublicId == id);
+            if (basket == null) return ErrorResult();
+            return SuccessResult(GetBasketInfoById(basket.Id));
+        }
     }
 }

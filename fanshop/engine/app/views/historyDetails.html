@@ -1,0 +1,13 @@
+﻿<div class="order-details-wrapper basket-wrapper" ng-controller="historyDetailsController">
+    <h1>Details</h1>
+    <h2>Total price <span>{{total}}</span></h2>
+    <div class="products-block">
+        <div class="product-item" ng-repeat="item in viewList">
+            <img ng-src="app/media/images/products/{{item.PublicKey}}.jpg" alt="{{item.Title}}" />
+            <p class="title">{{item.Title}}</p>
+            <p class="price">{{item.Price}}</p>
+            <div class="color" ng-style="{background:item.Color}"></div>
+            <p class="count">{{item.Count}}</p>
+        </div>
+    </div>
+</div>
