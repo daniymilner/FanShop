@@ -27,4 +27,15 @@ angular.module('shopApp').controller('adminOrdersController',
 	            }
 	        });
 	    };
+
+	    $scope.export = function () {
+	        $http({
+	            method: 'POST',
+	            url: '/api/product/export'
+	        }).success(function (data) {
+	            console.log('success');
+	        }).error(function () {
+	            console.log('no orders to export');
+	        });
+	    };
 	}]);

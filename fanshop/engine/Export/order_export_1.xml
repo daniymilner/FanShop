@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<orders>
+  <order id="805f77f3-f114-4c93-8329-056081896eba">
+    <userName>du aa</userName>
+    <publicId>a</publicId>
+    <dateCreate>30.09.2014 20:41:48</dateCreate>
+    <dateSuccess>30.09.2014 20:42:13</dateSuccess>
+    <dateUpdate>06.10.2014 20:59:50</dateUpdate>
+    <dateUpdate>136,50</dateUpdate>
+  </order>
+  <order id="d0e95676-d264-4f9c-a1d7-26021533bc57">
+    <userName>du aa</userName>
+    <publicId>b</publicId>
+    <dateCreate>02.10.2014 20:57:33</dateCreate>
+    <dateSuccess>07.10.2014 21:07:22</dateSuccess>
+    <dateUpdate>07.10.2014 20:46:32</dateUpdate>
+    <dateUpdate>31,50</dateUpdate>
+  </order>
+  <order id="7f485e42-affc-48d4-8b31-38d986e0a580">
+    <userName>du aa</userName>
+    <publicId>c</publicId>
+    <dateCreate>07.10.2014 21:08:42</dateCreate>
+    <dateSuccess>20.10.2014 22:36:00</dateSuccess>
+    <dateUpdate>07.10.2014 21:08:43</dateUpdate>
+    <dateUpdate>28,50</dateUpdate>
+  </order>
+  <order id="1b7bbb15-9444-4114-85bd-4146b7e972ce">
+    <userName>du aa</userName>
+    <publicId>d</publicId>
+    <dateCreate>07.10.2014 21:07:26</dateCreate>
+    <dateSuccess>07.10.2014 21:07:29</dateSuccess>
+    <dateUpdate>07.10.2014 21:07:26</dateUpdate>
+    <dateUpdate>10,50</dateUpdate>
+  </order>
+  <order id="406980e1-f707-4786-84fc-f69b9cccb1cf">
+    <userName>du aa</userName>
+    <publicId>e</publicId>
+    <dateCreate>29.09.2014 20:47:14</dateCreate>
+    <dateSuccess>30.09.2014 20:39:56</dateSuccess>
+    <dateUpdate>29.09.2014 21:22:06</dateUpdate>
+    <dateUpdate>93,50</dateUpdate>
+  </order>
+</orders>

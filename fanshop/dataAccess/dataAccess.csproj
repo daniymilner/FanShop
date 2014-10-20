@@ -58,6 +58,7 @@
     <Compile Include="Repository\BasketRepository.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
     <Compile Include="Repository\DefaultRepository.cs" />
+    <Compile Include="Repository\ExportRepository.cs" />
     <Compile Include="Repository\FeedbackRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />

@@ -44,4 +44,7 @@ angular.module('shopApp').controller('viewProductsController',
 	            deleteProductFromList(product.Id);
 	        });
 	    };
+	    $scope.import = function() {
+	        console.log('import');
+	    };
 	}]);

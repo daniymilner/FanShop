@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
+using System.Web;
 using System.Web.Http;
+using System.Xml;
 using dataAccess.Model;
 using dataAccess.Repository;
 
@@ -11,6 +14,9 @@ namespace engine.Controllers
     {
         private readonly ProductRepository _product = new ProductRepository();
         private readonly CategoryRepository _category = new CategoryRepository();
+        private readonly ExportRepository _export = new ExportRepository();
+        private readonly BasketRepository _basket = new BasketRepository();
+        private readonly UserRepository _user = new UserRepository();
 
         [HttpGet]
         [ActionName("GetAllProducts")]
@@ -26,7 +32,7 @@ namespace engine.Controllers
             Guid identifier;
             if (Guid.TryParse(id, out identifier))
             {
-                _product.DeleteItem(z=>z.Id == identifier);
+                _product.DeleteItem(z => z.Id == identifier);
             }
             return SuccessResult();
         }
@@ -80,5 +86,49 @@ namespace engine.Controllers
             var product = _product.GetFirstOrDefault(z => z.PublicKey == id);
             return product != null ? SuccessResult(product) : ErrorResult("no product");
         }
+
+        [HttpPost]
+        [ActionName("Export")]
+        public HttpResponseMessage Export()
+        {
+            var allExports = _export.All().OrderByDescending(z => z.Date).ToList();
+            var number = allExports.Count != 0 ? allExports[allExports.Count - 1].Number + 1 : 1;
+            var orders = allExports.Count != 0 ? _basket.FindAll(z => z.DateSuccess != null && z.DateSuccess > allExports[allExports.Count - 1].Date) : _basket.FindAll(z => z.DateSuccess != null);
+            
+            if (orders.Count == 0) return ErrorResult();
+            
+            var settings = new XmlWriterSettings { Indent = true, Encoding = Encoding.UTF8 };
+
+            var xmlDoc = HttpContext.Current.Request.PhysicalApplicationPath + "Export\\order_export_" + number + ".xml";
+            using (var writer = XmlWriter.Create(xmlDoc, settings))
+            {
+                writer.WriteStartDocument();
+                writer.WriteStartElement("orders");
+                foreach (var order in orders)
+                {
+                    var user = _user.GetFirstOrDefault(z => z.Id == order.UserId);
+                    writer.WriteStartElement("order");
+                    writer.WriteAttributeString("id", order.Id.ToString());
+                    writer.WriteElementString("userName", user.Name + " " + user.Surname);
+                    writer.WriteElementString("publicId", order.PublicId);
+                    writer.WriteElementString("dateCreate", Convert.ToString(order.DateCreate));
+                    writer.WriteElementString("dateSuccess", Convert.ToString(order.DateSuccess));
+                    writer.WriteElementString("dateUpdate", Convert.ToString(order.DateUpdate));
+                    writer.WriteElementString("total", Convert.ToString(order.Total));
+                    writer.WriteEndElement();
+                }
+                writer.WriteEndElement();
+                writer.WriteEndDocument();
+            }
+
+            _export.CreateItem(new Export
+            {
+                Date = DateTime.Now,
+                Id = Guid.NewGuid(),
+                Number = number
+            });
+            return SuccessResult();
+        }
+
     }
 }

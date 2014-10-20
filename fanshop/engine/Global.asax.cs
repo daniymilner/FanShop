@@ -53,7 +53,7 @@ namespace engine
             routes.MapHttpRoute("RemoveFeedback", defaultSchema);
             routes.MapHttpRoute("OrderHistory", defaultSchema);
             routes.MapHttpRoute("BasketInfoByPublicId", defaultSchema+"/{id}");
-
+            routes.MapHttpRoute("Export", defaultSchema);
         }
 
         void Application_End(object sender, EventArgs e)
