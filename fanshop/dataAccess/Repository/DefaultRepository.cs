@@ -40,6 +40,15 @@ namespace dataAccess.Repository
             }
         }
 
+        public void CreateItems(List<T> entities)
+        {
+            using (var db = new ShopDataContext())
+            {
+                db.GetTable<T>().InsertAllOnSubmit(entities);
+                db.SubmitChanges();
+            }
+        }
+
         public void DeleteItem(Func<T, bool> exp)
         {
             using (var db = new ShopDataContext())

@@ -18,18 +18,22 @@ angular.module('shopApp').controller('viewProductsController',
 	            .success(function (data) {
 	                callback(data);
 	            });
-	        };
-	    $http({
-	        method: 'GET',
-	        url: '/api/product/getallproducts'
-	    }).success(function (data) {
-	        $scope.productsList = data;
-	        $scope.productsList.forEach(function (item) {
-	            getCategoryInfo(item.CategoryId, function (category) {
-	                item.CategoryPublicKey = category.PublicKey;
+	        },
+	        init = function() {
+	            $http({
+	                method: 'GET',
+	                url: '/api/product/getallproducts'
+	            }).success(function (data) {
+	                $scope.productsList = data;
+	                $scope.productsList.forEach(function (item) {
+	                    getCategoryInfo(item.CategoryId, function (category) {
+	                        item.CategoryPublicKey = category.PublicKey;
+	                    });
+	                });
 	            });
-	        });
-	    });
+	        };
+
+	    init();
 	    $scope.create = function () {
 	        $rootScope.$state.go('adminProductsActions');
 	    };
@@ -44,7 +48,14 @@ angular.module('shopApp').controller('viewProductsController',
 	            deleteProductFromList(product.Id);
 	        });
 	    };
-	    $scope.import = function() {
-	        console.log('import');
+	    $scope.import = function () {
+	        $http({
+	            method: 'POST',
+	            url: '/api/product/import'
+	        }).success(function (data) {
+	            init();
+	        }).error(function () {
+
+	        });
 	    };
 	}]);

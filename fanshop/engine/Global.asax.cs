@@ -54,6 +54,8 @@ namespace engine
             routes.MapHttpRoute("OrderHistory", defaultSchema);
             routes.MapHttpRoute("BasketInfoByPublicId", defaultSchema+"/{id}");
             routes.MapHttpRoute("Export", defaultSchema);
+            routes.MapHttpRoute("Import", defaultSchema);
+            routes.MapHttpRoute("ImportCategory", defaultSchema);
         }
 
         void Application_End(object sender, EventArgs e)

@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Web;
 using System.Web.Http;
 using System.Xml;
+using System.Xml.Serialization;
 using dataAccess.Model;
 using dataAccess.Repository;
+using engine.Models;
 
 namespace engine.Controllers
 {
@@ -22,7 +26,7 @@ namespace engine.Controllers
         [ActionName("GetAllProducts")]
         public HttpResponseMessage GetAllProducts()
         {
-            return SuccessResult(_product.All());
+            return SuccessResult(_product.All().OrderByDescending(z=>z.UpdateDate));
         }
 
         [HttpPost]
@@ -127,6 +131,40 @@ namespace engine.Controllers
                 Id = Guid.NewGuid(),
                 Number = number
             });
+            return SuccessResult();
+        }
+
+        [HttpPost]
+        [ActionName("Import")]
+        public HttpResponseMessage Import()
+        {
+            ImportProductCollection products;
+            var path = HttpContext.Current.Request.PhysicalApplicationPath + "Import\\products.xml";
+
+            var serializer = new XmlSerializer(typeof(ImportProductCollection));
+
+            using (var reader = new StreamReader(path))
+            {
+                products = (ImportProductCollection)serializer.Deserialize(reader);
+            }
+
+            var importList = products.ImportProduct.ToList();
+            if (importList.Count == 0) return ErrorResult();
+
+            var list = importList.Select(product => new Products
+            {
+                Id = Guid.NewGuid(), 
+                Color = product.Color, 
+                Description = product.Description, 
+                Price = product.Price, 
+                PublicKey = product.PublicKey, 
+                Title = product.Title, 
+                UpdateDate = DateTime.Now, 
+                CategoryId = product.CategoryId
+            }).ToList();
+
+            _product.CreateItems(list);
+            
             return SuccessResult();
         }
 

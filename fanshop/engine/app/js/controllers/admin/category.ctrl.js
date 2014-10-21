@@ -9,13 +9,17 @@ angular.module('shopApp').controller('adminCategoryController',
 	                break;
 	            }
 	        }
-	    };
-	    $http({
-	        method: 'GET',
-	        url: '/api/category/getallcategories'
-	    }).success(function (data) {
-	        $scope.categoryList = data;
-	    });
+	    },
+	        init = function() {
+	            $http({
+	                method: 'GET',
+	                url: '/api/category/getallcategories'
+	            }).success(function (data) {
+	                $scope.categoryList = data;
+	            });
+	        };
+
+	    init();
 
 	    $scope.create = function () {
 	        $rootScope.$state.go('adminCategoryActions');
@@ -29,6 +33,16 @@ angular.module('shopApp').controller('adminCategoryController',
 	            url: '/api/category/deleteCategory/' + category.Id
 	        }).success(function () {
 	            deleteCategoryFromList(category.Id);
+	        });
+	    };
+	    $scope.import = function () {
+	        $http({
+	            method: 'POST',
+	            url: '/api/category/importCategory'
+	        }).success(function (data) {
+	            init();
+	        }).error(function () {
+
 	        });
 	    };
 	}]);

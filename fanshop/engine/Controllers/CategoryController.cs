@@ -1,8 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
+using System.Xml.Serialization;
 using dataAccess.Model;
 using dataAccess.Repository;
+using engine.Models;
 
 namespace engine.Controllers
 {
@@ -56,6 +62,35 @@ namespace engine.Controllers
         public HttpResponseMessage UpdateCategory(Category category)
         {
             _category.UpdateCategory(category);
+            return SuccessResult();
+        }
+
+        [HttpPost]
+        [ActionName("ImportCategory")]
+        public HttpResponseMessage ImportCategory()
+        {
+            ImportCategoryCollection categories;
+            var path = HttpContext.Current.Request.PhysicalApplicationPath + "Import\\category.xml";
+
+            var serializer = new XmlSerializer(typeof(ImportCategoryCollection));
+
+            using (var reader = new StreamReader(path))
+            {
+                categories = (ImportCategoryCollection)serializer.Deserialize(reader);
+            }
+
+            var importList = categories.ImportCategory.ToList();
+            if (importList.Count == 0) return ErrorResult();
+
+            var list = importList.Select(category => new Category
+            {
+                Id = Guid.NewGuid(), 
+                Name = category.Name, 
+                PublicKey = category.PublicKey
+            }).ToList();
+
+            _category.CreateItems(list);
+
             return SuccessResult();
         }
     }

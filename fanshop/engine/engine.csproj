@@ -280,6 +280,8 @@
     <Compile Include="Models\BasketData.cs" />
     <Compile Include="Models\ChangeProductCountData.cs" />
     <Compile Include="Models\CustomBasketLine.cs" />
+    <Compile Include="Models\ImportCategory.cs" />
+    <Compile Include="Models\ImportProduct.cs" />
     <Compile Include="Models\ProductData.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\ViewBasketData.cs" />
