@@ -7,8 +7,8 @@
             <p class="price">{{item.Price}}</p>
             <div class="color" ng-style="{background:item.Color}"></div>
             <input type="button" class="view-btn" name="view" value="View details" ng-click="view(item.PublicKey)"/>
-            <input type="number" name="count" ng-model="item.count" min="1" max="100"/>
-            <input type="button" class="buy-btn" name="buy" value="Add to basket" ng-click="addToBacket(item)" ng-disabled="item.disable" />
+            <input type="number" name="count" ng-model="item.count" min="1" max="100" ng-if="$user"/>
+            <input type="button" class="buy-btn" name="buy" value="Add to basket" ng-click="addToBacket(item)" ng-disabled="item.disable" ng-if="$user"/>
             <p ng-show="item.success">Success</p>
         </div>
     </div>
