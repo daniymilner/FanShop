@@ -13,9 +13,9 @@ angular.module('shopApp', [
 		    $rootScope.$state = $state;
 		    $rootScope.$stateParams = $stateParams;
 		    $rootScope.$on('$stateChangeStart', function (event, toState) {
-		        //if ((toState.isSecure && !Auth.isAuthenticated()) || (toState.isAdmin && !Auth.isAdmin())) {
-		        //    event.preventDefault();
-		        //    $rootScope.$state.go('home');
-		        //}
+		        if ((toState.isSecure && !Auth.isAuthenticated()) || (toState.isAdmin && !Auth.isAdmin())) {
+		            event.preventDefault();
+		            $rootScope.$state.go('home');
+		        }
 		    });
 		}]);
