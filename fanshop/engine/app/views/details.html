@@ -7,8 +7,8 @@
         <p class="price"><span>Price:</span> {{product.Price}}</p>
         <p class="color" ng-style="{background:product.Color}"></p>
         <p class="description"><span>Description:</span> {{product.Description}}</p>
-        <input type="number" name="count" ng-model="product.count" min="1" max="100">
-        <input type="button" class="buy-btn" name="buy" value="Add to basket" ng-click="addToBacket(product)" ng-disabled="disable" />
+        <input type="number" name="count" ng-model="product.count" min="1" max="100" ng-if="$user">
+        <input type="button" class="buy-btn" name="buy" value="Add to basket" ng-click="addToBacket(product)" ng-disabled="disable" ng-if="$user"/>
         <p class="success" ng-if="product.success">Success</p>
     </div>
 </div>
