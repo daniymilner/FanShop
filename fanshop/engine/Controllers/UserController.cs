@@ -121,5 +121,12 @@ namespace engine.Controllers
             }
             return SuccessResult();
         }
+
+        [HttpGet]
+        [ActionName("Home")]
+        public HttpResponseMessage Home()
+        {
+            return SuccessResult();
+        }
     }
 }

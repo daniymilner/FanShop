@@ -18,6 +18,7 @@ namespace engine
         {
             const string defaultSchema = "api/{controller}/{action}";
 
+            routes.MapHttpRoute("Home", defaultSchema);
             routes.MapHttpRoute("Registration", defaultSchema);
             routes.MapHttpRoute("UserInfo", defaultSchema);
             routes.MapHttpRoute("SignIn", defaultSchema);
