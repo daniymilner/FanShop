@@ -1,7 +1,7 @@
 ﻿"use strict";
 
 angular.module('shopApp').controller('homeController',
-	['$scope', '$rootScope', function ($scope, $rootScope) {
+	['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
 	    $http({
 	        method: "GET",
 	        url: "/api/user/home"
