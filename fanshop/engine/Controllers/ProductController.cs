@@ -126,9 +126,16 @@ namespace engine.Controllers
             }
             catch (Exception exception)
             {
-                return ErrorResult(exception.Message + "============"+
-                    exception.StackTrace + "============" + 
-                    exception.Data + "============");
+                var dir = new DirectoryInfo(HttpContext.Current.Request.PhysicalApplicationPath);
+                var result = "";
+                foreach (var item in dir.GetDirectories())
+                {
+                    result += "===" + item.Name;
+                }
+                return ErrorResult(result);
+                //return ErrorResult(exception.Message + "============"+
+                //exception.StackTrace + "============" + 
+                //exception.Data + "============");
             }
             _export.CreateItem(new Export
             {
