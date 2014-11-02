@@ -34,8 +34,10 @@ angular.module('shopApp').controller('adminOrdersController',
 	            url: '/api/product/export'
 	        }).success(function (data) {
 	            console.log('success');
-	        }).error(function () {
-	            console.log('no orders to export');
+	        }).error(function (data, err) {
+	            console.log(data);
+	            console.log(err);
+	            //console.log('no orders to export');
 	        });
 	    };
 	}]);

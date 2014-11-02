@@ -26,7 +26,7 @@ namespace engine.Controllers
         [ActionName("GetAllProducts")]
         public HttpResponseMessage GetAllProducts()
         {
-            return SuccessResult(_product.All().OrderByDescending(z=>z.UpdateDate));
+            return SuccessResult(_product.All().OrderByDescending(z => z.UpdateDate));
         }
 
         [HttpPost]
@@ -95,40 +95,45 @@ namespace engine.Controllers
         [ActionName("Export")]
         public HttpResponseMessage Export()
         {
-            //var allExports = _export.All().OrderByDescending(z => z.Date).ToList();
-            //var number = allExports.Count != 0 ? allExports[allExports.Count - 1].Number + 1 : 1;
-            //var orders = allExports.Count != 0 ? _basket.FindAll(z => z.DateSuccess != null && z.DateSuccess > allExports[allExports.Count - 1].Date) : _basket.FindAll(z => z.DateSuccess != null);
+            var allExports = _export.All().OrderByDescending(z => z.Date).ToList();
+            var number = allExports.Count != 0 ? allExports[allExports.Count - 1].Number + 1 : 1;
+            var orders = allExports.Count != 0 ? _basket.FindAll(z => z.DateSuccess != null && z.DateSuccess > allExports[allExports.Count - 1].Date) : _basket.FindAll(z => z.DateSuccess != null);
 
-            //if (orders.Count == 0) return ErrorResult();
+            if (orders.Count == 0) return ErrorResult();
 
-            //var settings = new XmlWriterSettings { Indent = true, Encoding = Encoding.UTF8 };
-
-            //var xmlDoc = HttpContext.Current.Request.PhysicalApplicationPath + "Export\\order_export_" + number + ".xml";
-            //using (var writer = XmlWriter.Create(xmlDoc, settings))
-            //{
-            //    writer.WriteStartDocument();
-            //    writer.WriteStartElement("orders");
-            //    foreach (var order in orders)
-            //    {
-            //        var user = _user.GetFirstOrDefault(z => z.Id == order.UserId);
-            //        writer.WriteElementString("userName", user.Name + " " + user.Surname);
-            //        writer.WriteElementString("publicId", order.PublicId);
-            //        writer.WriteElementString("dateCreate", Convert.ToString(order.DateCreate));
-            //        writer.WriteElementString("dateSuccess", Convert.ToString(order.DateSuccess));
-            //        writer.WriteElementString("dateUpdate", Convert.ToString(order.DateUpdate));
-            //        writer.WriteElementString("total", Convert.ToString(order.Total));
-            //        writer.WriteEndElement();
-            //    }
-            //    writer.WriteEndElement();
-            //    writer.WriteEndDocument();
-            //}
-
-            //_export.CreateItem(new Export
-            //{
-            //    Date = DateTime.Now,
-            //    Id = Guid.NewGuid(),
-            //    Number = number
-            //});
+            var settings = new XmlWriterSettings { Indent = true, Encoding = Encoding.UTF8 };
+            try
+            {
+                var xmlDoc = HttpContext.Current.Request.PhysicalApplicationPath + "Export\\order_export_" + number + ".xml";
+                using (var writer = XmlWriter.Create(xmlDoc, settings))
+                {
+                    writer.WriteStartDocument();
+                    writer.WriteStartElement("orders");
+                    foreach (var order in orders)
+                    {
+                        var user = _user.GetFirstOrDefault(z => z.Id == order.UserId);
+                        writer.WriteElementString("userName", user.Name + " " + user.Surname);
+                        writer.WriteElementString("publicId", order.PublicId);
+                        writer.WriteElementString("dateCreate", Convert.ToString(order.DateCreate));
+                        writer.WriteElementString("dateSuccess", Convert.ToString(order.DateSuccess));
+                        writer.WriteElementString("dateUpdate", Convert.ToString(order.DateUpdate));
+                        writer.WriteElementString("total", Convert.ToString(order.Total));
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndElement();
+                    writer.WriteEndDocument();
+                }
+            }
+            catch (Exception exception)
+            {
+                return ErrorResult(exception.ToString());
+            }
+            _export.CreateItem(new Export
+            {
+                Date = DateTime.Now,
+                Id = Guid.NewGuid(),
+                Number = number
+            });
             return SuccessResult();
         }
 
@@ -151,18 +156,18 @@ namespace engine.Controllers
 
             var list = importList.Select(product => new Products
             {
-                Id = Guid.NewGuid(), 
-                Color = product.Color, 
-                Description = product.Description, 
-                Price = product.Price, 
-                PublicKey = product.PublicKey, 
-                Title = product.Title, 
-                UpdateDate = DateTime.Now, 
+                Id = Guid.NewGuid(),
+                Color = product.Color,
+                Description = product.Description,
+                Price = product.Price,
+                PublicKey = product.PublicKey,
+                Title = product.Title,
+                UpdateDate = DateTime.Now,
                 CategoryId = product.CategoryId
             }).ToList();
 
             _product.CreateItems(list);
-            
+
             return SuccessResult();
         }
 
