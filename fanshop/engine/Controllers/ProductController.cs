@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Web;
 using System.Web.Http;
@@ -95,40 +97,32 @@ namespace engine.Controllers
         [ActionName("Export")]
         public HttpResponseMessage Export()
         {
-            var allExports = _export.All().OrderByDescending(z => z.Date).ToList();
+            var allExports = _export.All().OrderBy(z => z.Date).ToList();
             var number = allExports.Count != 0 ? allExports[allExports.Count - 1].Number + 1 : 1;
             var orders = allExports.Count != 0 ? _basket.FindAll(z => z.DateSuccess != null && z.DateSuccess > allExports[allExports.Count - 1].Date) : _basket.FindAll(z => z.DateSuccess != null);
 
-            if (orders.Count == 0) return ErrorResult();
+            if (orders.Count == 0) return ErrorResult("no items");
 
             var settings = new XmlWriterSettings { Indent = true, Encoding = Encoding.UTF8 };
-            try
+            var xmlDoc = HttpContext.Current.Request.PhysicalApplicationPath + "app\\export\\order_export_"+number+".xml";
+            using (var writer = XmlWriter.Create(xmlDoc, settings))
             {
-                var xmlDoc = HttpContext.Current.Request.PhysicalApplicationPath + "app\\export\\order_export_" + number + ".xml";
-                using (var writer = XmlWriter.Create(xmlDoc, settings))
+                writer.WriteStartDocument();
+                writer.WriteStartElement("orders");
+                foreach (var order in orders)
                 {
-                    writer.WriteStartDocument();
-                    writer.WriteStartElement("orders");
-                    foreach (var order in orders)
-                    {
-                        var user = _user.GetFirstOrDefault(z => z.Id == order.UserId);
-                        writer.WriteElementString("userName", user.Name + " " + user.Surname);
-                        writer.WriteElementString("publicId", order.PublicId);
-                        writer.WriteElementString("dateCreate", Convert.ToString(order.DateCreate));
-                        writer.WriteElementString("dateSuccess", Convert.ToString(order.DateSuccess));
-                        writer.WriteElementString("dateUpdate", Convert.ToString(order.DateUpdate));
-                        writer.WriteElementString("total", Convert.ToString(order.Total));
-                        writer.WriteEndElement();
-                    }
+                    var user = _user.GetFirstOrDefault(z => z.Id == order.UserId);
+                    writer.WriteStartElement("order");
+                    writer.WriteElementString("userName", user.Name + " " + user.Surname);
+                    writer.WriteElementString("publicId", order.PublicId);
+                    writer.WriteElementString("dateCreate", Convert.ToString(order.DateCreate));
+                    writer.WriteElementString("dateSuccess", Convert.ToString(order.DateSuccess));
+                    writer.WriteElementString("dateUpdate", Convert.ToString(order.DateUpdate));
+                    writer.WriteElementString("total", Convert.ToString(order.Total));
                     writer.WriteEndElement();
-                    writer.WriteEndDocument();
                 }
-            }
-            catch (Exception exception)
-            {
-                return ErrorResult(exception.Message + "============" +
-                exception.StackTrace + "============" +
-                exception.Data + "============");
+                writer.WriteEndElement();
+                writer.WriteEndDocument();
             }
             _export.CreateItem(new Export
             {
@@ -136,7 +130,13 @@ namespace engine.Controllers
                 Id = Guid.NewGuid(),
                 Number = number
             });
-            return SuccessResult();
+
+            var result = new HttpResponseMessage(HttpStatusCode.OK);
+            var stream = new FileStream(xmlDoc, FileMode.Open);
+            result.Content = new StreamContent(stream);
+            result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+
+            return SuccessResult(result);
         }
 
         [HttpPost]

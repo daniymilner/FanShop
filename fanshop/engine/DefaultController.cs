@@ -17,6 +17,10 @@ namespace engine
 
         public HttpResponseMessage SuccessResult(object result)
         {
+            var successResult = result as HttpResponseMessage;
+            if (successResult != null)
+                return successResult;
+
             var message = new HttpResponseMessage(HttpStatusCode.OK);
             if (result is string)
             {
