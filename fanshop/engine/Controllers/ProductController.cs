@@ -104,7 +104,7 @@ namespace engine.Controllers
             var settings = new XmlWriterSettings { Indent = true, Encoding = Encoding.UTF8 };
             try
             {
-                var xmlDoc = HttpContext.Current.Request.PhysicalApplicationPath + "Export\\order_export_" + number + ".xml";
+                var xmlDoc = HttpContext.Current.Request.PhysicalApplicationPath + "app\\export\\order_export_" + number + ".xml";
                 using (var writer = XmlWriter.Create(xmlDoc, settings))
                 {
                     writer.WriteStartDocument();
