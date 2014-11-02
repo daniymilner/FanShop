@@ -126,22 +126,9 @@ namespace engine.Controllers
             }
             catch (Exception exception)
             {
-                var dir = new DirectoryInfo(HttpContext.Current.Request.PhysicalApplicationPath+"app\\");
-                var result = "";
-                foreach (var item in dir.GetDirectories())
-                {
-                    result += " " + item.Name;
-                }
-                result += " ||| ";
-                 dir = new DirectoryInfo(HttpContext.Current.Request.PhysicalApplicationPath + "bin\\");
-                foreach (var item in dir.GetDirectories())
-                {
-                    result += " " + item.Name;
-                }
-                return ErrorResult(result);
-                //return ErrorResult(exception.Message + "============"+
-                //exception.StackTrace + "============" + 
-                //exception.Data + "============");
+                return ErrorResult(exception.Message + "============" +
+                exception.StackTrace + "============" +
+                exception.Data + "============");
             }
             _export.CreateItem(new Export
             {
