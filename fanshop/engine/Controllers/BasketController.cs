@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
+using dataAccess.Helpers;
 using dataAccess.Model;
 using dataAccess.Repository;
 using engine.Models;
@@ -25,7 +26,8 @@ namespace engine.Controllers
                 DateCreate = DateTime.Now,
                 DateUpdate = DateTime.Now,
                 UserId = userId,
-                Total = 0
+                Total = 0,
+                PublicId = StringHelper.RandomString(10).ToLower()
             });
             return basketId;
         }
