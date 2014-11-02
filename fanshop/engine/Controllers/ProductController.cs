@@ -129,7 +129,7 @@ namespace engine.Controllers
             //    Id = Guid.NewGuid(),
             //    Number = number
             //});
-            return SuccessResult(HttpContext.Current.Request);
+            return SuccessResult();
         }
 
         [HttpPost]
