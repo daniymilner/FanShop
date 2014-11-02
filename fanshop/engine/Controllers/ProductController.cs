@@ -126,7 +126,9 @@ namespace engine.Controllers
             }
             catch (Exception exception)
             {
-                return ErrorResult(exception.ToString());
+                return ErrorResult(exception.Message + "============"+
+                    exception.StackTrace + "============" + 
+                    exception.Data + "============");
             }
             _export.CreateItem(new Export
             {
