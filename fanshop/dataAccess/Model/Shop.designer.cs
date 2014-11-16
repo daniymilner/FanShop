@@ -54,7 +54,7 @@ namespace dataAccess.Model
     #endregion
 		
 		public ShopDataContext() : 
-				base(global::dataAccess.Properties.Settings.Default.fanshopConnectionString1, mappingSource)
+				base(global::dataAccess.Properties.Settings.Default.fanshopConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -944,7 +944,7 @@ namespace dataAccess.Model
 		
 		private string _Message;
 		
-		private System.Nullable<System.DateTime> _Date;
+		private System.DateTime _Date;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -958,7 +958,7 @@ namespace dataAccess.Model
     partial void OnEmailChanged();
     partial void OnMessageChanging(string value);
     partial void OnMessageChanged();
-    partial void OnDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateChanging(System.DateTime value);
     partial void OnDateChanged();
     #endregion
 		
@@ -1027,7 +1027,7 @@ namespace dataAccess.Model
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
 		public string Message
 		{
 			get
@@ -1047,8 +1047,8 @@ namespace dataAccess.Model
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime")]
-		public System.Nullable<System.DateTime> Date
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime NOT NULL")]
+		public System.DateTime Date
 		{
 			get
 			{
